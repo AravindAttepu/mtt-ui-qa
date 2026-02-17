@@ -35,8 +35,8 @@ jobs:
         run: |
           cd dist/appoinement-admin/browser
           git init
-          git config user.name "github-actions"
-          git config user.email "github-actions@github.com"
+          git config user.name "gopi6sigma"
+          git config user.email "gopi6sigma@gmail.com"
           git add .
           git commit -m "Deploy QA from mtt-ui-qa: $(date +'%Y-%m-%d %H:%M:%S')"
           git branch -M gh-pages
