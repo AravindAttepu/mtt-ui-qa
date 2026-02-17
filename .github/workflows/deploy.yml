@@ -1,0 +1,38 @@
+name: Deploy QA to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build Angular (QA config)
+        run: |
+          rm -rf dist/
+          npx ng build appoinement-admin --configuration=qa --base-href=/
+
+      - name: Add CNAME and 404
+        run: |
+          cp dist/appoinement-admin/browser/index.html dist/appoinement-admin/browser/404.html
+          echo "qa.sadisha.org" > dist/appoinement-admin/browser/CNAME
+
+      - name: Deploy to gh-pages branch
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist/appoinement-admin/browser
