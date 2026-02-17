@@ -5,37 +5,40 @@ on:
     branches:
       - main
 
-permissions:
-  contents: write
-
 jobs:
-  build-and-deploy:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repo
+      - name: Checkout mtt-ui-qa repo
         uses: actions/checkout@v3
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 14
+          node-version: '14'
 
       - name: Install dependencies
         run: npm install
 
-      - name: Build Angular (QA config)
+      - name: Clean and Build Angular app
         run: |
           rm -rf dist/
-          npx ng build appoinement-admin --configuration=qa --base-href=/
+          npx ng build appoinement-admin --configuration qa --base-href=/
 
-      - name: Add CNAME and 404
+      - name: Prepare extra files
         run: |
           cp dist/appoinement-admin/browser/index.html dist/appoinement-admin/browser/404.html
           echo "qa.sadisha.org" > dist/appoinement-admin/browser/CNAME
 
-      - name: Deploy to gh-pages branch
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist/appoinement-admin/browser
+      - name: Deploy to gh-pages
+        run: |
+          cd dist/appoinement-admin/browser
+          git init
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add .
+          git commit -m "Deploy QA from mtt-ui-qa: $(date +'%Y-%m-%d %H:%M:%S')"
+          git branch -M gh-pages
+          git remote add origin https://x-access-token:${{ secrets.PERSONAL_ACCESS_TOKEN }}@github.com/AravindAttepu/mtt-ui-qa.git
+          git push -f origin gh-pages
