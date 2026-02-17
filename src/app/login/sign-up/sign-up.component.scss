@@ -1,0 +1,45 @@
+@import '../../../assets/scss/variables';
+.signup-page {   
+    background-image:url('/assets/images/mobile-login.jpg') ;
+     background-repeat: no-repeat;
+     background-size: cover;
+    &__overlay {
+        background-color: rgba(0,0,0,0.5);
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;     
+        color: $white;
+    } 
+    &__left, 
+    &__right {
+        justify-content: flex-end;
+    }
+    &__sub-header {
+        font-family: 'myFontsLight';
+    }
+    &__form {
+        color: $black;
+        width: 25rem;
+        padding: 1.5rem;    
+    }
+    &__forgot-sec {
+        font-family: 'myFontsLight';
+        font-size: 0.875rem;
+    } 
+    &__form-group {
+        label {
+            font-family: 'myFontsLight';
+            font-size: 0.875rem;
+        }
+        margin-bottom: 1rem;
+        .form-control {
+            padding: 0.5rem 1rem;
+        }
+    }
+    input {
+        font-size: 0.875rem;
+        font-family: 'myFontsLight';
+        min-height: 2.8125rem;
+    }
+}

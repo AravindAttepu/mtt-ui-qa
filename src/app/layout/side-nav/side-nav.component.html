@@ -1,0 +1,17 @@
+<div class="side-nav">
+  <ul>
+    <li *ngFor="let nav of navlinkList" routerLinkActive="active">
+      <a *ngIf="!nav.isQuery" [routerLink]="nav.link">
+        <!-- <img class="icon"  src="/assets/icons/diagram.svg" alt="" /> -->
+        {{ nav.name }}
+      </a>
+      <a
+        *ngIf="nav.isQuery"
+        [routerLink]="nav.link"
+        [queryParams]="nav.queryParam"
+      >
+        {{ nav.name }}
+      </a>
+    </li>
+  </ul>
+</div>

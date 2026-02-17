@@ -1,0 +1,14 @@
+<app-hero-image [heading]="'EVERYTHING YOU NEED TO KNOW'" [bgImageClass]="'contact-us'"></app-hero-image>
+<div class="row">
+  <div class="faq col-12">
+    <h3 class="primary-text m-l-16 f-18">General Inquires</h3>
+    <accordion mode="single">
+      <accordion-item *ngFor="let question of faqList; let i =index">
+        <span class="f-16">{{question.heading}}</span>
+        <p class="f-14" [innerHTML]="question.description | safeHtml">
+
+        </p>
+      </accordion-item>
+    </accordion>
+  </div>
+</div>

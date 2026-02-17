@@ -1,0 +1,8 @@
+<div class="m-40">
+    <p class="m-b-40 f-18 line-height-31 text-grey2 f-w-400" [innerHtml]="htmlContent | safeHtml"></p>
+
+    <div class="d-flex justify-content-center">
+        <button type="button" class="my-btn cancel-btn" (click)="closePopup('cancel')">Cancel</button>
+        <button type="button" (click)="closePopup('confirm')" class="my-btn my-btn-primary m-l-28">Yes I'm sure</button>
+    </div>
+</div>

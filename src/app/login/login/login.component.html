@@ -1,0 +1,50 @@
+<div class="login-page">
+  <div class="login-page__overlay row m-0">
+    <div class="login-page__logo">
+      <div class="login-page__text">
+        <a href="/home" style="text-decoration: underline;">← Back to Home
+        </a>
+      </div>
+      <img class="w-100" src="assets/images/sadisha_logo.png" />
+    </div>
+    <div class="col-md-6 text-sm-center d-flex login-page__left animated bounceInLeft"></div>
+    <div class="col-md-6 d-flex login-page__right">
+      <form [formGroup]="loginForm" (submit)="login()">
+        <div class="login-page__form card m-r-32 animated bounceInDown">
+          <h6 class="login-page__sub-header">Login in to continue.</h6>
+
+          <!-- General login error message -->
+          <div *ngIf="loginError" class="login-page__error-message">
+            <span>⚠️ {{ loginError }}</span>
+          </div>
+
+          <div class="login-page__form-group">
+            <label> User Name</label>
+            <input type="text" class="form-control" [class.error-field]="fieldErrors.userName"
+              formControlName="userName" placeholder="Enter your user name" />
+            <div *ngIf="fieldErrors.userName" class="login-page__field-error">
+              {{ fieldErrors.userName }}
+            </div>
+          </div>
+          <div class="login-page__form-group">
+            <label> Password</label>
+            <input type="password" class="form-control" [class.error-field]="fieldErrors.password"
+              formControlName="password" placeholder="Enter your password" />
+            <div *ngIf="fieldErrors.password" class="login-page__field-error">
+              {{ fieldErrors.password }}
+            </div>
+          </div>
+          <div class="m-t-28 text-center">
+            <button type="submit" [disabled]="isAPILoading" class="my-btn my-btn-primary w-100">
+              <span *ngIf="!isAPILoading">SIGN IN</span>
+              <span *ngIf="isAPILoading">SIGN IN...</span>
+            </button>
+          </div>
+          <div class="text-center m-t-20 f-l pointer">
+            <a routerLink="/login/forgot-psw"> Forgot Password </a>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

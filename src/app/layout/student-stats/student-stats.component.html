@@ -1,0 +1,139 @@
+<div class="student-stats">
+    <!-- Header Section -->
+    <div class="stats-header">
+        <div class="stats-header__title-section">
+            <h1 class="stats-header__title">📊 Student Statistics Dashboard</h1>
+            <p class="stats-header__subtitle">Comprehensive analytics and insights</p>
+        </div>
+    </div>
+
+    <!-- Key Metrics Cards -->
+    <div class="metrics-grid">
+        <div class="metric-card metric-card--primary">
+            <div class="metric-card__icon">👨‍🎓</div>
+            <div class="metric-card__content">
+                <div class="metric-card__value">{{ totalStudents | number }}</div>
+                <div class="metric-card__label">Total Students</div>
+            </div>
+        </div>
+
+        <div class="metric-card metric-card--success">
+            <div class="metric-card__icon">🏫</div>
+            <div class="metric-card__content">
+                <div class="metric-card__value">{{ totalZones }}</div>
+                <div class="metric-card__label">Total Zones</div>
+            </div>
+        </div>
+
+        <div class="metric-card metric-card--info">
+            <div class="metric-card__icon">📍</div>
+            <div class="metric-card__content">
+                <div class="metric-card__value">{{ totalMandals }}</div>
+                <div class="metric-card__label">Total Mandals</div>
+            </div>
+        </div>
+
+        <div class="metric-card metric-card--warning">
+            <div class="metric-card__icon">📈</div>
+            <div class="metric-card__content">
+                <div class="metric-card__value">{{ avgStudentsPerMandal }}</div>
+                <div class="metric-card__label">Avg per Mandal</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Top Performer Section -->
+    <div class="top-performer" *ngIf="topZone">
+        <div class="top-performer__badge">🏆</div>
+        <div class="top-performer__content">
+            <h3 class="top-performer__title">Top Performing Zone</h3>
+            <div class="top-performer__zone">{{ topZone.n }}</div>
+            <div class="top-performer__count">{{ topZone.s | number }} Students</div>
+        </div>
+    </div>
+
+    <!-- Zones Overview Section -->
+    <div class="section-card">
+        <div class="section-card__header">
+            <h2 class="section-card__title">📊 Zone-wise Distribution</h2>
+            <span class="section-card__badge">{{ zonesList.length }} Zones</span>
+        </div>
+
+        <!-- Visual Bar Chart -->
+        <div class="chart-container">
+            <div class="chart-bars">
+                <div *ngFor="let zone of zonesList" class="chart-bar-item">
+                    <div class="chart-bar-item__info">
+                        <span class="chart-bar-item__label">{{ zone.n }}</span>
+                        <span class="chart-bar-item__value">{{ zone.s }}</span>
+                    </div>
+                    <div class="chart-bar-item__bar-wrapper">
+                        <div class="chart-bar-item__bar" [style.width.%]="(zone.s / totalStudents * 100)">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Table View Toggle -->
+        <div class="data-table">
+            <table class="modern-table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Zone Name</th>
+                        <th>Number of Students</th>
+                        <th>Percentage</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let zone of zonesList; let i = index">
+                        <td>{{ i + 1 }}</td>
+                        <td class="modern-table__zone-name">{{ zone.n }}</td>
+                        <td class="modern-table__count">{{ zone.s | number }}</td>
+                        <td class="modern-table__percentage">
+                            {{ (zone.s / totalStudents * 100) | number:'1.1-1' }}%
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Mandal-wise Breakdown -->
+    <div *ngFor="let district of districtsList; let i = index" class="section-card">
+        <div class="section-card__header">
+            <h2 class="section-card__title">📍 {{ district.name }}</h2>
+            <span class="section-card__badge">{{ district.mandals.length }} Mandals</span>
+        </div>
+
+        <!-- Mandals Grid View -->
+        <div class="mandals-grid">
+            <div *ngFor="let mandal of district.mandals.slice(0, 6)" class="mandal-card">
+                <div class="mandal-card__name">{{ mandal.name }}</div>
+                <div class="mandal-card__count">{{ mandal.students }}</div>
+                <div class="mandal-card__label">Students</div>
+            </div>
+        </div>
+
+        <!-- Detailed Table -->
+        <div class="data-table">
+            <table class="modern-table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Mandal Name</th>
+                        <th>Number of Students</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let mandal of district.mandals; let j = index">
+                        <td>{{ j + 1 }}</td>
+                        <td class="modern-table__zone-name">{{ mandal.name }}</td>
+                        <td class="modern-table__count">{{ mandal.students | number }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,69 @@
+@import '../../../assets/scss/variables';
+
+.address-nav {
+    position: relative;
+    /* Changed from absolute to relative to stack correctly */
+    /* top, left, right not needed for static/relative block flow */
+    z-index: 101;
+    /* Higher than header */
+    height: auto;
+    /* Allow content to dictate height, or keep fixed if needed */
+    min-height: 3.125rem;
+    border-bottom: 1px solid $mainBgColor;
+    background-color: $primaryColor;
+    /* Deep Navy Background for top bar */
+    display: flex;
+    /* Flex to align items */
+    color: $white;
+    align-items: center;
+
+    &__list {
+        list-style-type: none;
+        margin: 0;
+        display: flex;
+        padding: 0.6rem;
+        align-items: center; // Ensure vertical centering of all items
+    }
+
+    &__item {
+        margin: 0 1rem;
+        display: flex; // Flex container for the item itself
+        align-items: center;
+    }
+
+    &__link {
+        color: rgba(255, 255, 255, 0.85); // Slightly muted default
+        text-decoration: none;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%; // Fill the item height
+
+        /* Remove circular background styling */
+
+        &.social-icon {
+            opacity: 0.8;
+            font-size: 1.1rem;
+
+            &:hover {
+                color: #fff !important; // Footer style brightness
+                opacity: 1 !important;
+                filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.8)); // Glow effect as requested
+                transform: translateY(-2px);
+            }
+        }
+
+        .mdi,
+        .fa {
+            font-size: inherit; // Inherit size from parent
+        }
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .address-nav {
+        display: none !important;
+        /* Minimal Top like CRY */
+    }
+}

@@ -1,0 +1,133 @@
+<div class="card shadow">
+  <div class="card-body">
+    
+    <div class="card-text">
+
+     <!-- <div class="dnd-wraper my-2" *ngIf="isImageUpload">
+        <img
+        [src]="previewImage"
+        *ngIf="!previewImages.length"
+        class="preview"
+        alt="image"
+      />
+      <div
+        class="d-flex justify-content-start flex-wrap"
+        *ngIf="previewImages && previewImages.length"
+      >
+        <div
+          class="position-relative"
+          *ngFor="let image of previewImages; let i = index"
+        >
+          <img
+            src="{{ image }}"
+            width="70"
+            height="70"
+            class="m-1"
+            (click)="showGallery()"
+          />
+          <span
+            class="position-absolute text-white"
+            (click)="removeImg(image, i)"
+            style="top: 0; right: 0"
+          >
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Flat_cross_icon.svg/1200px-Flat_cross_icon.svg.png"
+              class="hover"
+              style="margin-top: -5px"
+              width="15"
+          /></span>
+        </div>
+
+        <div class="d-flex" *ngIf="isImageUpload" >
+        <button 
+      type="submit"
+      (click)="sendDetails()"
+      class="mx-auto my-btn  my-btn-primary shadow" 
+    >
+      Submit
+    </button> </div>
+   
+      </div>
+      </div>
+    
+      <div class="d-flex">
+        <input
+        type="file"
+        class="form-control d-none"
+        name="file"
+        #fileInput
+        (change)="fileProgress($event)"
+      />
+      
+
+        <button type="button"  class="mx-auto my-btn  my-btn-primary shadow" (click)="fileInput.click()">
+          Browse Images
+        </button>
+        </div>   -->
+          
+         
+  <!-- Webcam area Webcam area -->
+  <form [formGroup]="galleryUpload">
+
+        <!-- Webcam area -->
+        <div class="col-12 col-sm-6 col-md-4 web-perms-button-div">
+          <button type="button" (click)="checkPermissions()" class="my-btn web-perms-btn">Webcam Permissions</button>
+          <p *ngIf="status">Status Here: {{status}}</p>
+        </div>
+        <div *ngIf="stream" class="row">
+          <!-- webcam image here -->
+          <webcam [trigger]="$trigger" (imageCapture)="snapshot($event)" [allowCameraSwitch]="true" (initError)="handleWebcamInitError($event)" [height]="480" [width]="640" [imageQuality]="1" [videoOptions]="videoOptions"></webcam>
+          <div>
+            <button type="button" (click)="captureImage()" class="my-btn my-btn-primary">{{captureBtnLable}}</button>
+          </div>
+        </div>
+        <div>
+          <!-- Preview Area -->
+          <img [src]="webcamPreviewImage" *ngIf="webcamPreviewImage" height="480" width="640" />
+          <div *ngIf="webcamPreviewImage">
+            <button type="button" (click)="sendDetails()" class="mx-auto my-btn my-btn-primary">Upload</button>
+          </div>
+        </div>
+        <!-- Webcam area -->
+        
+    <!--
+    <div class="my-btn my-btn-primary"> <h2>Capture/Upload Paper</h2>
+    <button type="button" style="color: blue;" (click)="checkPermissions()" class="my-btn">ALLOW WebCAM</button><br>
+    <p *ngIf="status">Status Here: {{status}}</p>
+  </div>
+
+
+  <div id="parent">
+    <div id="left" *ngIf="stream && showLeftDiv"> 
+      <webcam [trigger]="$trigger" (imageCapture)="snapshot($event)" [allowCameraSwitch]="true" 
+        (initError)="handleWebcamInitError($event)"   [height]="480" [width]="640" [imageQuality]="1" 
+        [videoOptions]="videoOptions"></webcam>
+      <div style="position: sticky;">
+        <button type="button" (click)="captureImage()" class="my-btn my-btn-primary">{{ captureBtnLable }}</button>
+      </div>
+    </div>
+    <div id="right" *ngIf="!showLeftDiv && webcamPreviewImage">
+      <img [src]="webcamPreviewImage" height="480" width="640" class="webcam-image" />
+      <div>
+        <br>
+        <button type="button" (click)="sendDetails()" class="mx-auto my-btn my-btn-primary">Upload</button>
+  
+        <button
+          type="button"
+          class="mx-auto my-btn my-btn-primary"
+          (click)="hideAlert()"
+          data-dismiss="alert"
+          aria-label="Close"
+        >Retake</button>
+  
+      </div>
+    </div>
+  </div>
+-->
+
+
+</form>
+  
+</div> 
+</div>  
+</div>

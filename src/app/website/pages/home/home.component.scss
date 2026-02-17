@@ -1,0 +1,365 @@
+@import './../../../../assets/scss/variables';
+
+/* Global Section Enhancements */
+/* Global Section Enhancements */
+.section-title {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  letter-spacing: 2px;
+  font-size: clamp(1.4rem, 2.8vw, 1.84rem);
+  color: #1f2937;
+  text-transform: uppercase;
+}
+
+/* Result Links Bar */
+.result-links-bar {
+  background: #f8f9fa;
+  border-radius: 12px;
+}
+
+.result-link-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 14px;
+  background: white;
+  border: 1px solid #eee;
+  border-radius: 30px;
+  font-weight: 700;
+  color: $primaryColor;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  text-decoration: none !important;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-color: $warning-color;
+  }
+}
+
+/* Orbital Diagram Section (CRY Inspired) */
+.approach-orbital-container {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  height: 400px;
+  margin: 3.2rem auto 0;
+
+  @media screen and (max-width: 767px) {
+    height: 320px;
+    max-width: 256px;
+  }
+}
+
+.orbital-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 128px;
+  height: 128px;
+  background: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+  z-index: 5;
+
+  .center-inner {
+    text-align: center;
+
+    .center-logo {
+      max-height: 40px;
+      margin-bottom: 5px;
+    }
+
+    .center-text {
+      font-size: 0.52rem;
+      font-weight: 800;
+      color: #666;
+      letter-spacing: 1px;
+    }
+  }
+}
+
+.orbital-pillar {
+  position: absolute;
+  width: 88px;
+  text-align: center;
+  z-index: 4;
+
+  .pillar-icon {
+    width: 56px;
+    height: 56px;
+    background: white;
+    border: 2px solid #eee;
+    border-radius: 50%;
+    margin: 0 auto 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.28rem;
+    color: $primaryColor;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  }
+
+  .pillar-label {
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #444;
+  }
+
+  &:hover .pillar-icon {
+    border-color: $warning-color;
+    transform: scale(1.1);
+    background: $warning-color;
+    color: #fff;
+  }
+
+  /* Positioning pillars in a circle */
+  &.pillar-1 {
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  &.pillar-2 {
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+  }
+
+  &.pillar-3 {
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  &.pillar-4 {
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+  }
+}
+
+/* Animated connections (Circular dash) */
+.approach-orbital-container::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 256px;
+  height: 256px;
+  border: 2px dashed rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  animation: rotate-orbit 20s linear infinite;
+
+  @media screen and (max-width: 767px) {
+    width: 176px;
+    height: 176px;
+  }
+}
+
+@keyframes rotate-orbit {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+/* High-Impact Program Cards */
+.program-card {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border: none;
+
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.15);
+  }
+
+  .card-img-wrapper {
+    position: relative;
+    height: 192px;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .card-tag {
+      position: absolute;
+      top: 16px;
+      left: 0;
+      background: $warning-color;
+      color: #000;
+      font-weight: 800;
+      padding: 5px 12px;
+      font-size: 0.6rem;
+      border-radius: 0 16px 16px 0;
+      box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    }
+  }
+
+  &:hover img {
+    transform: scale(1.1);
+  }
+}
+
+/* Impact Statistics Cards */
+.impact-stat-card {
+  padding: 1.6rem;
+  transition: transform 0.3s;
+
+  .impact-icon-circle {
+    width: 64px;
+    height: 64px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $warning-color;
+  }
+
+  .impact-number {
+    letter-spacing: -1px;
+    color: #fff;
+  }
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.italic {
+  font-style: italic;
+}
+
+.hover-scale {
+  transition: transform 0.3s;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+/* Legacy / Base Styles Cleanup */
+.notifications-link a {
+  display: inline-block;
+  padding: 0.5rem;
+  margin-bottom: 0.4rem;
+  border-radius: 0.1875rem;
+}
+
+.swiper-background {
+  background: rgba(129, 75, 211, 0.05);
+  margin-top: 3.2rem;
+  padding: 2.4rem 0;
+}
+
+/* Swper Styles (Marquee Effect) */
+.swiper {
+  width: 100%;
+  overflow: hidden !important;
+  /* Ensure content is masked */
+
+  .swiper-wrapper {
+    display: flex !important;
+    transition-timing-function: linear !important;
+    will-change: transform;
+  }
+}
+
+.swiper-slide {
+  flex-shrink: 0 !important;
+  /* Prevent Swiper from compressing slides to 0 */
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  height: 176px;
+  /* Force container height */
+  width: 176px !important;
+  /* Force a square basis for round images */
+
+  img {
+    width: 144px !important;
+    height: 144px !important;
+    min-width: 144px;
+    min-height: 144px;
+    object-fit: cover;
+    border-radius: 50% !important;
+    border: none !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+}
+
+
+
+
+.swiper-pagination {
+  display: none;
+}
+
+.emoji-pulse {
+  display: inline-block;
+  animation: pulse-scale 1.5s infinite ease-in-out;
+}
+
+@keyframes pulse-scale {
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.3);
+  }
+}
+
+/* Donate Button Enhancements */
+.donate-hero-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #FFD700;
+  color: #3e2723;
+  font-size: 1.4rem;
+  font-weight: 700;
+  padding: 15px 45px;
+  border-radius: 50px;
+  text-decoration: none;
+  border: none;
+  box-shadow: 0 10px 20px rgba(255, 215, 0, 0.3);
+  transition: all 0.3s ease;
+  z-index: 10;
+
+  &:hover {
+    transform: translateY(-3px) scale(1.02);
+    background: #FFCA28;
+    box-shadow: 0 15px 30px rgba(255, 215, 0, 0.4);
+    color: #3e2723;
+    text-decoration: none;
+  }
+}

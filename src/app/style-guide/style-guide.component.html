@@ -1,0 +1,97 @@
+<app-header></app-header>
+<div class="content-wrapper">
+  <div class="section__wrapper p-25">
+    <mat-tab-group>
+      <mat-tab label="Form"> 
+        <h1 class="section__heading"> Form fields</h1>
+        <form>
+          <div class="form-group">
+            <label class="label" for="exampleFormControlInput1">Email address <span class="required-star">*</span></label>
+            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+          </div>
+          <div class="form-group">
+            <label class="label" for="exampleFormControlSelect1">Select Age <span class="required-star">*</span></label>
+            <ng-select [items]="languagesList" placeholder="select language" name="selectedLanguage"
+              [(ngModel)]="selectedLanguage">
+            </ng-select>
+          </div>
+          <div class="form-group">
+            <label class="label" for="exampleFormControlSelect2">Select multiple languages <span
+                class="required-star">*</span></label>
+            <ng-select [items]="languagesList" placeholder="select language" name="selectedLanguage"
+              [(ngModel)]="selectedLanguage" [multiple]='true'>
+            </ng-select>
+          </div>
+          <div class="form-group">
+            <label class="label" for="exampleFormControlTextarea1">Enter Examination</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+          </div>
+          <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="keepMeSignIn">
+            <label class="custom-control-label pointer label" for="keepMeSignIn">
+              <span>Send Welcome message</span>
+            </label>
+          </div>
+          <div class="form-group m-t-12">
+            <label class="label" for="exampleFormControlTextarea1">Age type</label>
+            <div>
+              <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input">
+                <label class="custom-control-label label" for="customRadioInline1">Age</label>
+              </div>
+              <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
+                <label class="custom-control-label label" for="customRadioInline2">Birth Date</label>
+              </div>
+            </div>
+          </div>
+          <div class="m-t-28">
+            <button type="button" class="my-btn my-btn-primary">SIGN IN</button>
+            <button type="button" class="my-btn cancel-btn m-l-28">Cancel</button>
+          </div>
+        </form>
+      </mat-tab>
+      <mat-tab label="Tabs"> 
+        <h1 class="section__heading"> Table</h1>
+        <div class="responsive-table">
+          <table class="table table-striped table-hover my-table">
+            <thead>
+              <tr>
+                <th>S.No</th>
+                <th>User</th>
+                <th>Patient Name</th>
+                <th>Age</th>
+                <th>Amount</th>
+                <th>Admitted Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of patientsList;let i = index">
+                <td>
+                  {{i+1}}
+                </td>
+                <td class="py-1">
+                  <img src="/assets/images/avatar.png" alt="avatar"/>
+                </td>
+                <td>
+                  {{item.name}}
+                </td>
+                <td>
+                  {{item.age}}
+                </td>
+                <td>
+                  ₹ {{item.amount | number: '1.2-2'}}
+                </td>
+                <td>
+                  {{item.admittedDate}}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </mat-tab>
+      <mat-tab label="Modals"> Modal popup content goes here </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>
+<app-footer></app-footer>

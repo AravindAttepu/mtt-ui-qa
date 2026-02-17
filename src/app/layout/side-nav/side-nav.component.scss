@@ -1,0 +1,45 @@
+@import './../../../assets/scss/variables';
+.side-nav {
+    background: #fff;
+    box-shadow: 5px -3px 15px 0px rgb(0 0 0 / 20%);
+    height: 100%;
+    min-width: 180px;
+    ul {
+        list-style-type: none;
+        padding-left: 0px;
+        // padding-top: 20px;
+        padding-bottom: 1.25rem;
+
+        li {
+            padding-right: 1.25rem;
+            padding-left: 1.25rem;
+            .icon {
+                width: 1.25rem;
+                height: 1.25rem;
+                margin-right: 0.68rem;
+            }
+            a {
+                min-height: 2.5rem;
+                display: flex;
+                align-items: center;
+                transition: all .35s ease;
+                white-space: nowrap;
+                font-size: 0.875rem;
+                width: 100%;
+                cursor: pointer;
+            }
+
+            &.active, &:hover {
+                background-color: $EgyptianBlue;
+                .icon {
+                    // fill: #2196F3;
+                    // filter: invert(48%) sepia(79%) saturate(2476%) hue-rotate(86deg) brightness(118%) contrast(119%);
+                }
+                a {
+                    color: $DodgerBlue;
+                    // padding-left:10px;
+                }
+            }
+        }
+    }
+}

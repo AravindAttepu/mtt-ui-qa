@@ -1,0 +1,27 @@
+
+@import './variables';
+.my-table {
+    thead{
+        th{
+            border: none;
+        }
+    } 
+    td {
+        vertical-align: middle;
+        font-size: 0.875rem;
+        line-height: 1;
+        white-space: nowrap;
+        border: none;
+        img {
+            width: 2.25rem;
+            height: 2.25rem;
+            border-radius: 100%;
+        }
+    }
+    &.table-striped tbody tr:nth-of-type(odd) {
+        background-color: $mainBgColor;
+    }
+    &.table-hover tbody tr:hover {
+        background-color: $mainBgColor;
+    }
+}

@@ -1,0 +1,4 @@
+<router-outlet></router-outlet>
+<app-compute-final-results></app-compute-final-results>
+<app-snack-bar *ngIf="showAlert" [data]="showAlert"></app-snack-bar>
+<div class="app-loading" *ngIf="showLoader"></div>

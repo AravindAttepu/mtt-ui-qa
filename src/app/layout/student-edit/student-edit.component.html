@@ -1,0 +1,359 @@
+<div class="page">
+  <h1 class="page-header primary-text f-22 m-t-5 m-b-20 font-italic">
+    Edit student
+  </h1>
+  <div class="page-content">
+    <div class="student-field" *ngIf="!showEditForm && !isStudentDetails">
+      <form (submit)="getStudentDetails()">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="form-group col-12 col-sm-6 col-md-4">
+              <label class="label">
+                Student User Name <span class="required-star">*</span></label
+              >
+              <div class="input-group w-100">
+                <input
+                  type="text"
+                  [(ngModel)]="studentId"
+                  name="studentId"
+                  class="form-control"
+                  id="studentName"
+                />
+                <div class="input-group-append">
+                  <button
+                    type="submit"
+                    [disabled]="!studentId"
+                    class="my-btn my-btn-primary ml-3"
+                  >
+                    Get Details
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div *ngIf="showEditForm">
+      <form [formGroup]="studentsForm" (submit)="updateStudent()">
+        <div class="row">
+          <div class="form-group col-12 col-sm-6 col-md-4">
+            <label class="label">
+              Student User Name</label
+            >
+            <input
+              type="text"
+              formControlName="userName"
+              class="form-control"
+              id="studentUserName"
+              readonly
+            />
+          </div>
+          <div class="form-group col-12 col-sm-6 col-md-4">
+            <label class="label">
+              Student Name <span class="required-star">*</span></label
+            >
+            <input
+              type="text"
+              formControlName="studentName"
+              class="form-control"
+              id="studentName"
+            />
+            <div
+              class="f-14 error-message"
+              *ngIf="
+                (studentsForm.get('studentName').touched || formSubmitted) &&
+                studentsForm.get('studentName').hasError('required')
+              "
+            >
+              Please Enter Student Name
+            </div>
+          </div>
+          <div class="form-group col-12 col-sm-6 col-md-4">
+            <label class="label">
+              Parent Name <span class="required-star">*</span></label
+            >
+            <input
+              type="text"
+              formControlName="parentName"
+              class="form-control"
+              id="parentName"
+            />
+            <div
+              class="f-14 error-message"
+              *ngIf="
+                (studentsForm.get('parentName').touched || formSubmitted) &&
+                studentsForm.get('parentName').hasError('required')
+              "
+            >
+              Please Enter Parent Name
+            </div>
+          </div>
+
+          <div class="form-group col-12 col-sm-6 col-md-4">
+            <label class="label">
+              Gender <span class="required-star">*</span></label
+            >
+            <ng-select
+              [items]="genders"
+              formControlName="gender"
+              id="gender"
+              name="gender"
+              [clearable]="false"
+            >
+            </ng-select>
+            <div
+              class="f-14 error-message"
+              *ngIf="
+                (studentsForm.get('gender').touched || formSubmitted) &&
+                studentsForm.get('gender').hasError('required')
+              "
+            >
+              Please Select Gender
+            </div>
+          </div>
+
+          <div class="form-group col-12 col-sm-6 col-md-4">
+            <label class="label">
+              Aadhar Number <span class="required-star">*</span></label
+            >
+            <input
+              type="text"
+              formControlName="aadharNumber"
+              class="form-control"
+              id="aadharNumber"
+            />
+            <div
+              class="f-14 error-message"
+              *ngIf="
+                (studentsForm.get('aadharNumber').touched || formSubmitted) &&
+                studentsForm.get('aadharNumber').hasError('required')
+              "
+            >
+              Please Enter Aadhar Number
+            </div>
+          </div>
+
+          <div class="form-group col-12 col-sm-6 col-md-4">
+            <label class="label"> Zone <span class="required-star">*</span></label>
+            <ng-select [items]="districtsList" formControlName="zone" id="zone"  name="zone" bindLabel="name" [clearable]="false" (change)="onSelectDistrict()">
+            </ng-select>
+            <div class="f-14 error-message"
+                *ngIf="(studentsForm.get('zone').touched || formSubmitted) && studentsForm.get('zone').hasError('required')">
+                Please Select Zone</div>
+          </div>
+
+          <div class="form-group col-12 col-sm-6 col-md-4">
+            <label class="label"> Mandal/Taluk <span class="required-star">*</span></label>
+            <ng-select [items]="mandalsList" formControlName="mandal" id="mandal"
+                name="mandal" bindLabel="name" [clearable]="false" (change)="onSelectMandal()">
+            </ng-select>
+            <div class="f-14 error-message"
+                *ngIf="(studentsForm.get('mandal').touched || formSubmitted) && studentsForm.get('mandal').hasError('required')">
+                Please Select Mandal/Taluk</div>
+        </div>
+
+        <div class="form-group col-12 col-sm-6 col-md-4">
+          <label class="label">Select School <span class="required-star">*</span></label>
+          <ng-select [items]="schoolsList" formControlName="schoolName" id="schoolName"  name="schoolName"  [clearable]="false">
+          </ng-select>
+          <div class="f-14 error-message"
+              *ngIf="(studentsForm.get('schoolName').touched  || formSubmitted) && studentsForm.get('schoolName').hasError('required')">
+              Please Select School</div>
+      </div>
+
+          <div class="form-group col-12 col-sm-6 col-md-4">
+            <label class="label">
+              Contact Number <span class="required-star">*</span></label
+            >
+            <input
+              type="text"
+              numbersOnly
+              maxlength="10"
+              minlength="10"
+              formControlName="contactNumber"
+              class="form-control"
+              id="contactNumber"
+            />
+            <div class="f-14 error-message">
+              <span
+                *ngIf="
+                  (studentsForm.get('contactNumber').touched ||
+                    formSubmitted) &&
+                  studentsForm.get('contactNumber').hasError('required')
+                "
+              >
+                Please Enter Contact Number
+              </span>
+
+              <span
+                *ngIf="
+                  (studentsForm.get('contactNumber').touched ||
+                    formSubmitted) &&
+                  studentsForm.get('contactNumber')?.value?.length > 0 &&
+                  studentsForm.get('contactNumber')?.value?.length < 10
+                "
+              >
+                Please Enter Valid Contact Number
+              </span>
+            </div>
+          </div>
+          <div class="form-group col-12 col-sm-6 col-md-4">
+            <label class="label">
+              Secondary Contact</label>
+            <input
+              type="text"
+              numbersOnly
+              maxlength="10"
+              minlength="10"
+              formControlName="secondaryContact"
+              class="form-control"
+              id="secondaryContact"/>
+            <div class="f-14 error-message">
+              <span
+                *ngIf="
+                  (studentsForm.get('secondaryContact').touched ||
+                    formSubmitted) &&
+                  studentsForm.get('secondaryContact')?.value?.length > 0 &&
+                  studentsForm.get('secondaryContact')?.value?.length < 10">
+                Please Enter Valid Contact Number
+              </span>
+            </div>
+          </div>
+
+          <div class="form-group col-12 col-sm-6 col-md-4">
+            <label class="label">
+              Email ID
+            </label>
+            <input
+              type="email"
+              formControlName="emailId"
+              class="form-control"
+              id="emailId"/>
+            <div
+              class="f-14 error-message"
+              *ngIf="
+                (studentsForm.get('emailId').touched || formSubmitted) &&
+                studentsForm.get('emailId').hasError('emailId')">
+              Please Enter a Valid Email ID
+            </div>
+          </div>
+
+        </div>
+        <div class="m-t-28 text-center">
+          <button
+            type="submit"
+            [disabled]="isAPILoading"
+            class="my-btn my-btn-primary"
+          >
+            <span *ngIf="!isAPILoading">Update</span>
+            <span *ngIf="isAPILoading">Updating...</span>
+          </button>
+          <button
+            type="button"
+            class="my-btn cancel-btn m-l-28"
+            (click)="resetForm()"
+          >
+            Cancel
+          </button>
+          <button
+            type="button"
+            (click)="deleteStudent(content1)"
+            [disabled]="isAPILoading"
+            class="my-btn my-btn-danger m-l-28 mr-2"
+          >
+            <span>Delete</span>
+          </button>
+          <button
+            (click)="clearAnswers(content1)"
+            type="button"
+            [disabled]="isAPILoading"
+            class="my-btn my-btn-danger mr-2"
+          >
+            <span>Clear Answer</span>
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <div class="container-fluid" *ngIf="showTable">
+      <div class="row">
+        <div class="col-md-12 animated rotateInUpLeft">
+          <div class="card w-100 m-auto">
+            <h2 class="text-center">Students List</h2>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table text-center">
+                  <thead class="table-dark">
+                    <tr>
+                      <th>Name</th>
+                      <th>Parent Name</th>
+                      <th>Class</th>
+                      <th>District</th>
+                      <th>Gender</th>
+                      <th>School</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr
+                      *ngFor="let student of studentsList; let i = index"
+                      [ngClass]="{ selected: selectedIndex == i }"
+                    >
+                      <td (click)="selectStudent(i)" class="hover">
+                        {{ student.Name }}
+                      </td>
+                      <td>
+                        <span class="img-path">{{ student.parentName }}</span>
+                      </td>
+                      <td>{{ student.score }}</td>
+                      <td>{{ student.category }}</td>
+                      <td>{{ student.questionsSolved }}</td>
+                      <td>{{ student.school }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <ng-template #content1 let-c="close" let-d="dismiss">
+      <div class="modal-header border-bottom-0">
+        <button
+          type="button"
+          class="close"
+          aria-label="Close"
+          (click)="d('Cross click')"
+        >
+          <span class="close-icon" aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="container-fluid" style="padding: 24px">
+        <div class="row justify-content-center">
+          <div class="col-15 text-center">
+            <div class="modal-msg">Are you sure you want to delete this student record?</div>
+            <div class="modal-msg">{{ alertMsg }}</div>
+          </div>
+        </div>
+        <div class="d-flex justify-content-center pb-2 mt-3">
+          <button
+            (click)="d('Cross click')"
+            class="text-black-50 btn btn-light rounded-pill hover"
+            style="font-weight: 400; border: 1px solid grey"
+          >
+            &nbsp; &nbsp; Cancel &nbsp; &nbsp;</button
+          >&nbsp; &nbsp;
+          <button
+            (click)="delete()"
+            class="text-white rounded-pill btn btn-danger hover"
+            style="font-weight: 400"
+          >
+            &nbsp; &nbsp; Delete &nbsp; &nbsp;</button
+          >&nbsp;
+        </div>
+      </div>
+    </ng-template>
+  </div>
+</div>

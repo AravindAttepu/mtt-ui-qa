@@ -1,0 +1,9 @@
+@import './../../../assets/scss/variables';
+.container-fluid{
+    .theme-color{
+        color: $dodger-blue;
+    }
+    .note{
+        color:$error-color;
+    }
+}

@@ -1,0 +1,22 @@
+<div>
+  <div class="container-fluid p-0 education-page">
+    <app-hero-image [bgImageClass]="'contact-us'" [heading]="'OUR EDUCATIONAL INITIATIVES'"></app-hero-image>
+
+    <div class="talent-test bg-white pt-1">
+      <div class="container-fluid p-0">
+        <nav class="custom-tabs">
+          <ul class="tabs-list">
+            <li [routerLink]="['/talent-test/']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+              Home
+            </li>
+            <li [routerLink]="['/talent-test/notifications']" routerLinkActive="active">Notifications</li>
+            <li [routerLink]="['/talent-test/previous-papers']" routerLinkActive="active">Previous Papers</li>
+            <li [routerLink]="['/talent-test/final-results']" routerLinkActive="active">Final Result</li>
+          </ul>
+        </nav>
+        <div>
+          <router-outlet></router-outlet>
+        </div>
+      </div>
+    </div>
+  </div>

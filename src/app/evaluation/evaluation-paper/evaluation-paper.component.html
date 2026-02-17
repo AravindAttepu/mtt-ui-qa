@@ -1,0 +1,221 @@
+<div class="page">
+  <div class="page-header-wrapper">
+    <h1 class="page-header">📋 Evaluation Sheet</h1>
+    <div class="alert alert-warning" *ngIf="rejectPaper" role="alert">
+      You selected Reject Paper. If not intended, please unselect and proceed.
+    </div>
+  </div>
+  <div class="page-content evaluation">
+    <div class="row" *ngIf="isPageLoaded">
+      <div class="col-12 col-lg-5">
+        <div class="evaluation__form-panel">
+          <div class="evaluation__header">
+            <div class="evaluation__reg-number">
+              <label>Registration Number:</label>
+              <input type="text" [(ngModel)]="paperDetails.userName" [ngModelOptions]="{ standalone: true }"
+                class="form-control" />
+            </div>
+            <div class="evaluation__reject-switch">
+              <label>Reject Paper:</label>
+              <label class="switch">
+                <input type="checkbox" [(ngModel)]="rejectPaper" [ngModelOptions]="{ standalone: true }" />
+                <span class="slider"></span>
+              </label>
+            </div>
+          </div>
+          <form (submit)="submitPaper()">
+            <div class="evaluation__table-wrapper">
+              <div class="evaluation__answers-table">
+                <table class="table table-border mb-0">
+                  <thead>
+                    <tr class="white-color">
+                      <th>Q No.</th>
+                      <th>Answer</th>
+                      <th class="border-left">Q No.</th>
+                      <th>Answer</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>1</p>
+                      </td>
+                      <td>
+                        <input type="text" numbersOnly [(ngModel)]="questionPapers[0]"
+                          [ngModelOptions]="{ standalone: true }" class="form-control w-75 ml-2 evaluation__text-area"
+                          [ngClass]="{
+                        'evaluation__text-area--readonly': isFormSubmitted
+                      }" pattern="^[0-9]+$" #question1="ngModel" />
+                        <p class="field-error m-0">
+                          <span class="field-error-text" *ngIf="question1.errors?.pattern">Only digits (0-9) are allowed
+                            here.</span>
+                        </p>
+                      </td>
+                      <td class="border-left">
+                        <p>2</p>
+                      </td>
+                      <td>
+                        <input type="text" numbersOnly [(ngModel)]="questionPapers[1]"
+                          [ngModelOptions]="{ standalone: true }" class="form-control w-75 ml-2 evaluation__text-area"
+                          [ngClass]="{
+                        'evaluation__text-area--readonly': isFormSubmitted
+                      }" pattern="^[0-9]+$" #question2="ngModel" />
+                        <p class="field-error m-0">
+                          <span class="field-error-text" *ngIf="question2.errors?.pattern">Only digits (0-9) are allowed
+                            here.</span>
+                        </p>
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                        <p>3</p>
+                      </td>
+                      <td>
+                        <input type="text" numbersOnly [(ngModel)]="questionPapers[2]"
+                          [ngModelOptions]="{ standalone: true }" class="form-control w-75 ml-2 evaluation__text-area"
+                          [ngClass]="{
+                        'evaluation__text-area--readonly': isFormSubmitted
+                      }" pattern="^[0-9]+$" #question3="ngModel" />
+                        <p class="field-error m-0">
+                          <span class="field-error-text" *ngIf="question3.errors?.pattern">Only digits (0-9) are allowed
+                            here.</span>
+                        </p>
+                      </td>
+                      <td class="border-left">
+                        <p>4</p>
+                      </td>
+                      <td>
+                        <input type="text" numbersOnly [(ngModel)]="questionPapers[3]"
+                          [ngModelOptions]="{ standalone: true }" class="form-control w-75 ml-2 evaluation__text-area"
+                          [ngClass]="{
+                        'evaluation__text-area--readonly': isFormSubmitted
+                      }" pattern="^[0-9]+$" #question4="ngModel" />
+                        <p class="field-error m-0">
+                          <span class="field-error-text" *ngIf="question4.errors?.pattern">Only digits (0-9) are allowed
+                            here.</span>
+                        </p>
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                        <p>5</p>
+                      </td>
+                      <td>
+                        <input type="text" numbersOnly [(ngModel)]="questionPapers[4]"
+                          [ngModelOptions]="{ standalone: true }" class="form-control w-75 ml-2 evaluation__text-area"
+                          [ngClass]="{
+                        'evaluation__text-area--readonly': isFormSubmitted
+                      }" pattern="^[0-9]+$" #question5="ngModel" />
+                        <p class="field-error m-0">
+                          <span class="field-error-text" *ngIf="question5.errors?.pattern">Only digits (0-9) are allowed
+                            here.</span>
+                        </p>
+                      </td>
+                      <td class="border-left">
+                        <p>6</p>
+                      </td>
+                      <td>
+                        <input type="text" numbersOnly [(ngModel)]="questionPapers[5]"
+                          [ngModelOptions]="{ standalone: true }" class="form-control w-75 ml-2 evaluation__text-area"
+                          [ngClass]="{
+                        'evaluation__text-area--readonly': isFormSubmitted
+                      }" pattern="^[0-9]+$" #question6="ngModel" />
+                        <p class="field-error m-0">
+                          <span class="field-error-text" *ngIf="question6.errors?.pattern">Only digits (0-9) are allowed
+                            here.</span>
+                        </p>
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                        <p>7</p>
+                      </td>
+                      <td>
+                        <input type="text" numbersOnly [(ngModel)]="questionPapers[6]"
+                          [ngModelOptions]="{ standalone: true }" class="form-control w-75 ml-2 evaluation__text-area"
+                          [ngClass]="{
+                        'evaluation__text-area--readonly': isFormSubmitted
+                      }" pattern="^[0-9]+$" #question7="ngModel" />
+                        <p class="field-error m-0">
+                          <span class="field-error-text" *ngIf="question7.errors?.pattern">Only digits (0-9) are allowed
+                            here.</span>
+                        </p>
+                      </td>
+                      <td class="border-left">
+                        <p>8</p>
+                      </td>
+                      <td>
+                        <input type="text" numbersOnly [(ngModel)]="questionPapers[7]"
+                          [ngModelOptions]="{ standalone: true }" class="form-control w-75 ml-2 evaluation__text-area"
+                          [ngClass]="{
+                        'evaluation__text-area--readonly': isFormSubmitted
+                      }" pattern="^[0-9]+$" #question8="ngModel" />
+                        <p class="field-error m-0">
+                          <span class="field-error-text" *ngIf="question8.errors?.pattern">Only digits (0-9) are allowed
+                            here.</span>
+                        </p>
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                        <p>9</p>
+                      </td>
+                      <td>
+                        <input type="text" numbersOnly [(ngModel)]="questionPapers[8]"
+                          [ngModelOptions]="{ standalone: true }" class="form-control w-75 ml-2 evaluation__text-area"
+                          [ngClass]="{
+                        'evaluation__text-area--readonly': isFormSubmitted
+                      }" pattern="^[0-9]+$" #question9="ngModel" />
+                        <p class="field-error m-0">
+                          <span class="field-error-text" *ngIf="question9.errors?.pattern">Only digits (0-9) are allowed
+                            here.</span>
+                        </p>
+                      </td>
+                      <td class="border-left">
+                        <p>10</p>
+                      </td>
+                      <td>
+                        <input type="text" numbersOnly [(ngModel)]="questionPapers[9]"
+                          [ngModelOptions]="{ standalone: true }" class="form-control w-75 ml-2 evaluation__text-area"
+                          [ngClass]="{
+                        'evaluation__text-area--readonly': isFormSubmitted
+                      }" pattern="^[0-9]+$" #question10="ngModel" />
+                        <p class="field-error m-0">
+                          <span class="field-error-text" *ngIf="question10.errors?.pattern">Only digits (0-9) are
+                            allowed
+                            here.</span>
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="evaluation__form-footer">
+              <button type="submit" class="my-btn my-btn-primary">
+                Submit
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class="col-12 col-lg-7">
+        <div class="evaluation__image-container">
+          <div class="evaluation__preview-header">
+            <h3 class="evaluation__preview-title">Paper Preview</h3>
+            <button (click)="rotate()" class="my-btn my-btn-primary" type="button">🔄 Rotate</button>
+          </div>
+          <div class="evaluation__image-scroll">
+            <img [@rotatedState]='state' class="evaluation__image" [src]="paperDetails.signedImageUrl" alt="" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

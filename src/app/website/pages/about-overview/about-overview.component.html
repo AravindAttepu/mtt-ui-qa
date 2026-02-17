@@ -1,0 +1,118 @@
+<div class="container-fluid p-0 about-us-page">
+    <app-hero-image [bgImageClass]="'contact-us'" [heading]="'THE HEART OF SADISHA'"></app-hero-image>
+
+    <div class="container py-5">
+        <!-- Mission Section -->
+        <div class="row align-items-center mb-5">
+            <div class="col-lg-6 mb-4 mb-lg-0">
+                <h2 class="heading text-primary">Our Mission</h2>
+                <p class="lead font-italic text-muted border-left border-primary pl-3 mb-4">
+                    "To provide the right direction for every aspiring mind, ensuring that financial barriers never
+                    stand in the way of passion and quality education."
+                </p>
+                <p class="intro">
+                    <span class="highlight">Sadisha</span> means <em>"Right Direction"</em>. We are a registered
+                    Non-Profit
+                    Organization dedicated to uplifting rural communities through education and skill development.
+                </p>
+                <h3 class="mb-3">Our Journey: From One Test to One Movement</h3>
+                <p>
+                    It began with the <strong>Mathematics Talent Test (MTT)</strong>—a simple exam to spot mathematical
+                    brilliance in government schools across rural Telangana. We weren't looking for students who could
+                    memorize formulas; we wanted conceptual thinkers, problem-solvers, dreamers.
+                </p>
+                <p>
+                    What we found changed everything.
+                </p>
+                <p>
+                    Students who had demonstrated exceptional intelligence outperformed expectations when given the
+                    right guidance. Families without financial backup for tuitions watched their bright children
+                    struggle—but with Sadisha's sponsorship, these intelligent students gained access to quality
+                    coaching and successfully cracked competitive exams like GATE and secured admissions to premier
+                    institutions.
+                </p>
+                <p>
+                    <strong>That's when we realized: poverty isn't a lack of talent, it's a lack of access.</strong>
+                </p>
+                <p>
+                    <strong>Our Core Philosophy:</strong> We don't parachute into villages with solutions. We listen, we
+                    learn, we co-create. Our volunteers travel to remote districts, conduct workshops, and build
+                    relationships—because sustainable change comes from within. From spotting talent in Class 10 to
+                    guiding students through college placements, we walk every step with them.
+                </p>
+                <p>
+                    Today, Sadisha Foundation has sponsored 300+ students, empowered 100+ women engineers through
+                    residential GATE coaching, and built a network of 150+ volunteers from IITs, NITs, and corporate
+                    India. Our vision is bold: an India where every child, regardless of their village or economic
+                    background, has the power to shape their own future through education.
+                </p>
+            </div>
+            <div class="col-lg-6">
+                <div class="card shadow-lg border-0 image-card">
+                    <img src="assets/images/sadisha.png" class="img-fluid rounded" alt="Sadisha Team">
+                </div>
+            </div>
+        </div>
+
+        <!-- Organization Details Cards -->
+        <h2 class="subheading text-center mb-4">Organization Details</h2>
+        <div class="cards mb-5">
+            <!-- Reg No Card -->
+            <div class="card feature-card">
+                <div class="card-icon">🏛️</div>
+                <h4 class="card-title blue">Legitimacy</h4>
+                <p class="card-text">Registered Entity</p>
+                <div class="card-value">Reg. No: 789/2016</div>
+            </div>
+
+            <!-- NGO ID Card -->
+            <div class="card feature-card">
+                <div class="card-icon">🆔</div>
+                <h4 class="card-title purple">Transparency</h4>
+                <p class="card-text">NITI Aayog NGO ID</p>
+                <div class="card-value">TS/2022/0314957</div>
+            </div>
+
+            <!-- Values Card -->
+            <div class="card feature-card">
+                <div class="card-icon">🤝</div>
+                <h4 class="card-title green">Our Values</h4>
+                <p class="card-text">Core Principles</p>
+                <div class="card-value">Inclusivity & Excellence</div>
+            </div>
+        </div>
+
+        <!-- Core Values List -->
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="subheading">The Values That Guide Us</h2>
+                <p class="intro max-w-800 mx-auto">
+                    <strong>🌾 Community-Rooted:</strong> We listen, we learn, we co-create with villages.<br>
+                    <strong>🎓 Merit & Mentorship:</strong> We find students based on potential, not privilege.<br>
+                    <strong>👭 Equity & Inclusion:</strong> Special focus on girl students and marginalized
+                    communities.<br>
+                    <strong>📊 Transparency:</strong> We maintain open communication with our donors and are committed
+                    to accountability in all our operations.<br>
+                    <strong>🤝 Unity in Action:</strong> We partner with schools, communities, and donors—because real
+                    change cannot happen in isolation.
+                </p>
+            </div>
+        </div>
+    </div>
+    <!-- Bottom Action Card -->
+    <section class="cta-banner py-5 bg-light mt-5">
+        <div class="container text-center">
+            <div class="cta-content p-5 bg-white shadow rounded-lg border-warning-bottom">
+                <h2 class="mb-4">Support Our <span class="text-warning">Mission</span></h2>
+                <p class="lead text-muted mb-5">Your contribution empowers rural students to achieve their dreams. Join
+                    us in making a difference today.</p>
+                <div class="d-flex justify-content-center flex-wrap gap-3">
+                    <a [routerLink]="['/donate']"
+                        class="btn btn-warning btn-lg px-5 font-weight-bold text-dark rounded-pill mr-3">DONATE NOW</a>
+                    <a [routerLink]="['/volunteer-registration']"
+                        class="btn btn-outline-primary btn-lg px-5 font-weight-bold rounded-pill">JOIN AS VOLUNTEER</a>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

@@ -1,0 +1,71 @@
+@import './../../../assets/scss/variables';
+
+.footer {
+    min-height: auto;
+    background-color: #1e2530 !important;
+    padding: 4rem 0 2rem 0;
+
+    .hover-white {
+        transition: all 0.3s ease;
+
+        &:hover {
+            color: #fff !important;
+            opacity: 1 !important;
+        }
+    }
+
+    .brand-details {
+        margin-top: 1rem;
+    }
+
+    .border-secondary {
+        border-color: rgba(255, 255, 255, 0.1) !important;
+    }
+
+    .theme-color {
+        text-decoration: none;
+        color: $indigo;
+        font-weight: 600;
+    }
+
+    .address-nav {
+        position: relative;
+        top: 20;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        height: 2.125rem;
+        color: $white;
+        align-items: center;
+
+        &__list {
+            list-style-type: none;
+            margin: 0;
+            display: flex;
+            padding: 0;
+        }
+
+        &__item {
+            margin: 0 1rem;
+        }
+
+        &__link {
+            color: $white;
+
+            .mdi {
+                font-size: 1rem;
+            }
+        }
+    }
+}
+
+@media screen and (max-width:767px) {
+    .align-centre {
+        text-align: center !important;
+        margin-bottom: 0.757rem;
+
+        ul {
+            justify-content: center;
+        }
+    }
+}

@@ -1,0 +1,16 @@
+@import './../../../../assets/scss/variables';
+input , textarea , .bg-input{
+    background-color: $whiteSmoke !important;
+}
+.map{
+    max-width: 37.5rem;
+    width: 37.5rem;
+    height: 21.87rem;
+    max-height: 28.125rem;
+}
+@media screen and (max-width: 768px) {
+    .map{
+        max-width: 100%;
+        max-height: 12.5rem;
+    }
+  }

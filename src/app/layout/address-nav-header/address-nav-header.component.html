@@ -1,0 +1,28 @@
+<div class="d-flex address-nav justify-content-end flex-wrap container-fluid">
+  <ul class="address-nav__list">
+    <li class="address-nav__item">
+      <a class="address-nav__link" href="mailto:admin@sadisha.org">
+        <span class="fa fa-envelope mr-1"></span>
+        <span>admin@sadisha.org</span>
+      </a>
+    </li>
+    <li class="address-nav__item">
+      <a class="address-nav__link text-nowrap" href="tel:+91-9550895968">
+        <span class="fa fa-phone mr-1"></span>
+        <span>+91-9550895968</span>
+      </a>
+    </li>
+  </ul>
+  <ul class="address-nav__list">
+    <li class="address-nav__item d-none d-lg-block">
+      <a class="address-nav__link social-icon" href="https://www.facebook.com/sadisha.org/">
+        <span class="fa fa-facebook"></span>
+      </a>
+    </li>
+
+    <li class="address-nav__item ml-auto ml-sm-3">
+      <a [routerLink]="['/donate']" class="btn btn-warning font-weight-bold text-dark donate-btn"
+        style="border-radius: 20px; padding: 5px 15px; cursor: pointer; font-size: 0.9rem; box-shadow: 0 4px 6px rgba(0,0,0,0.2);">DONATE</a>
+    </li>
+  </ul>
+</div>

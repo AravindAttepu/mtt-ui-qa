@@ -1,0 +1,38 @@
+<!-- for info message -->
+<div class="box-postion shadow alert-box" #containerBox>
+  <div class="row app-msg-cont no-gutters info-msg-box" *ngIf="data.alertType == 'info'">
+    <div class="col-sm">
+      <div class="dodger-blue-txt f-14" [innerHtml]="data.htmlContent"></div>
+    </div>
+    <div class="col-sm-auto">
+      <span class="close-red-icon icon m-l-16" (click)="closeAlert()"></span>
+    </div>
+  </div>
+  <!-- for warning message -->
+  <div class="row app-msg-cont no-gutters warning-msg-box" *ngIf="data.alertType == 'warning'">
+    <div class="col-sm">
+      <div class="medium-yellow-txt f-14" [innerHtml]="data.htmlContent"></div>
+    </div>
+    <div class="col-sm-auto">
+      <span class="close-red-icon icon m-l-16" (click)="closeAlert()"></span>
+    </div>
+  </div>
+  <!-- for error message -->
+  <div class="row app-msg-cont no-gutters error-msg-box" *ngIf="data.alertType == 'error'">
+    <div class="col-sm">
+      <div class="error-col-txt f-14" [innerHtml]="data.htmlContent"></div>
+    </div>
+    <div class="col-sm-auto">
+      <span class="close-red-icon icon m-l-16" (click)="closeAlert()"></span>
+    </div>
+  </div>
+  <!-- for success -->
+  <div class="row app-msg-cont no-gutters success-msg-box"   *ngIf="data.alertType == 'success'">
+    <div class="col-sm">
+      <div class="green-txt f-14" [innerHtml]="data.htmlContent"></div>
+    </div>
+    <div class="col-sm-auto">
+      <span class="close-red-icon icon m-l-16" (click)="closeAlert()"></span>
+    </div>
+  </div>
+</div>

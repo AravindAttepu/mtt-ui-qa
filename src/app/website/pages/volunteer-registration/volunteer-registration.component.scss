@@ -1,0 +1,29 @@
+@import './../../../../assets/scss/variables';
+.reg-form {
+    max-width: 75rem;
+    margin: 2.5rem auto;
+    background: $white;
+    border-radius: 3px;
+    padding: 1rem;
+}
+
+.label {
+    display: inline-block;
+    min-width: 100px;
+}
+
+.register-link {
+    margin-top: 20px;
+    display: inline-block;
+    text-decoration: underline !important;
+    font-size: 18px;
+}
+@media (max-width: 768px) {
+  input {
+    min-height: 2.5rem;
+  }
+
+  body {
+    overflow-x: hidden;
+  }
+}

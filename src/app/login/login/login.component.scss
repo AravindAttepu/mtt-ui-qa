@@ -1,0 +1,131 @@
+@import '../../../assets/scss/variables';
+
+.login-page {
+    // background-image:url('/assets/images/kelly-sikkema-U7WKYPKOyHg-unsplash.jpg') ;
+    background-image: url('https://drive.google.com/thumbnail?id=10xJiS27dxcoss8XesBhNBQ3O9rElhDnd');
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100vh;
+    background-position: center;
+
+    &__logo {
+        position: absolute;
+        top: 50px;
+        left: 50px;
+        border-radius: 10px;
+        max-width: 130px;
+    }
+
+    &__text {
+        font-size: 17px;
+        padding-bottom: 20px;
+    }
+
+    &__overlay {
+        background-color: rgba(0, 0, 0, 0.1);
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: $white;
+    }
+
+    &__left,
+    &__right {
+        justify-content: flex-end;
+    }
+
+    &__sub-header {
+        font-family: 'myFontsLight';
+    }
+
+    &__form {
+        color: $black;
+        width: 25rem;
+        padding: 1.5rem;
+    }
+
+    &__forgot-sec {
+        font-family: 'myFontsLight';
+        font-size: 0.875rem;
+    }
+
+    &__error-message {
+        background-color: #fee;
+        border: 1px solid #f88;
+        border-radius: 4px;
+        padding: 0.75rem;
+        margin-bottom: 1rem;
+        color: #c33;
+        font-size: 0.875rem;
+        font-family: 'myFontsLight';
+
+        span {
+            display: block;
+        }
+    }
+
+    &__field-error {
+        color: #d32f2f;
+        font-size: 0.75rem;
+        margin-top: 0.25rem;
+        font-family: 'myFontsLight';
+    }
+
+    &__form-group {
+        label {
+            font-family: 'myFontsLight';
+            font-size: 0.875rem;
+        }
+
+        margin-bottom: 1rem;
+
+        .form-control {
+            padding: 0.5rem 1rem;
+
+            &.error-field {
+                border-color: #d32f2f;
+                border-width: 2px;
+
+                &:focus {
+                    border-color: #d32f2f;
+                    box-shadow: 0 0 0 0.2rem rgba(211, 47, 47, 0.25);
+                }
+            }
+        }
+    }
+
+    input {
+        font-size: 0.875rem;
+        font-family: 'myFontsLight';
+        min-height: 2.8125rem;
+    }
+
+    @media (max-width: 768px) {
+        &__right {
+            justify-content: center;
+            /* Center the form on small screens */
+        }
+
+        &__form {
+            width: 100%;
+            /* Make the form full width on small screens */
+        }
+
+        &__form-group {
+            margin-bottom: 0.5rem;
+            /* Reduce margin for form groups */
+        }
+
+        input {
+            min-height: 2.5rem;
+            /* Adjust input height for small screens */
+        }
+
+        body {
+            overflow-x: hidden;
+            /* Prevent horizontal overflow */
+        }
+
+    }
+}

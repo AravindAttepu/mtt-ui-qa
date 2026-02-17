@@ -1,0 +1,49 @@
+@import './../../../assets/scss/variables';
+.previous-paper {
+    &__tabs {
+        width: 100%;
+    }
+    &__answers-table {
+        border: 1px solid #ccc;
+        border-radius: 3px;
+    }
+    &__answers-column {
+        padding: 0.625rem;
+    }
+    &__text-area{
+
+        border-bottom: 1px solid $primaryColor !important;
+        margin-bottom: 10px;
+        outline: none;
+        resize: none;
+        &--readonly {
+            pointer-events: none;
+        }
+
+        &:focus {
+            outline: none;
+        }
+    }
+    &__wrong-answer {
+        textarea {
+            border: 1px solid $errorColor !important;
+        }
+    }
+     &__correct-answer {
+        font-weight: bold;
+        font-style: italic;
+        color: $primaryColor;
+        margin-left: 32px;
+        margin-bottom: 10px;
+     }
+}
+
+.ng-dirty.ng-invalid.ng-touched {
+    border-color: $error-color !important;
+}
+
+.field-error {
+    color: $error-color;
+    font-size: 12px;
+    padding-top: 4px;
+}

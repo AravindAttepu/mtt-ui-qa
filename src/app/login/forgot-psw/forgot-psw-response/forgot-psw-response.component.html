@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="response-container">
+        <h1>Response Page</h1>
+        <div *ngIf="responseData">
+          <div class="response-message">
+            <p>Retrieved Credentials:</p>
+            <div class="credentials">
+              <div class="credential">
+                <span class="credential-label">Username:</span>
+                <span class="credential-value">{{ responseData.username }}</span>
+              </div>
+              <div class="credential">
+                <span class="credential-label">Password:</span>
+                <span class="credential-value">{{ responseData.password }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <h1 class="welcome_title text-center m-t-32 animated bounceInLeft">
+          Login to check your details and download the hall ticket. <a routerLink="/login" class="pointer"><u>Click</u></a>
+          here !!
+        </h1>
+      </div>
+    </div>
+  </div>
+</div>

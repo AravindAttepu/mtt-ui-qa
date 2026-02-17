@@ -1,0 +1,13 @@
+{
+    "/**": {
+      "target": "https://sadisha-be2.el.r.appspot.com",
+      "secure": false,
+      "logLevel": "debug",
+      "changeOrigin": true,
+      "headers": {
+        "X-Tenant": "sadisha-be.uc.r.appspot.com",
+        "X-RHost": "sadisha-be.uc.r.appspot.com",
+        "X-Secure": false
+      }
+    }
+}

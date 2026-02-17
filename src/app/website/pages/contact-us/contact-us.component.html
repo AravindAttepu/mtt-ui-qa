@@ -1,0 +1,164 @@
+<div class="bg-white">
+    <app-hero-image [heading]="'Contact Us'" [bgImageClass]="'contact-us'"></app-hero-image>
+    <br>
+    <!-- <h3 class="primary-text text-center mt-2">Contact Us</h3> -->
+    <div class="container py-custom">
+        <h2 class="section-title text-center mb-5">Get in <span class="text-warning">Touch</span></h2>
+
+        <div class="row justify-content-center mb-5">
+            <div class="col-lg-8 text-center">
+                <p class="lead text-muted">
+                    We'd love to hear from you. Whether you have a question about our programs, want to volunteer, or
+                    are looking to partner with us, our team is ready to answer all your questions.
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <div class="card h-100 shadow-sm border-0">
+                    <div class="card-body p-4">
+                        <h4 class="mb-4 text-primary font-weight-bold">Registered Office</h4>
+                        <div class="d-flex mb-3">
+                            <div class="mr-3 text-warning"><i class="fa fa-map-marker fa-lg"></i></div>
+                            <div>
+                                <h6 class="font-weight-bold mb-1">Sadisha Foundation</h6>
+                                <p class="text-muted mb-0 small">
+                                    Flat No.201, Plot No.428, Street No.9, Brindavanam,<br>
+                                    Kakatiya Hills, Madhapur, Hyderabad,<br>
+                                    Telangana - 500081
+                                </p>
+                            </div>
+                        </div>
+                        <div class="d-flex mb-3">
+                            <div class="mr-3 text-warning"><i class="fa fa-envelope fa-lg"></i></div>
+                            <div>
+                                <h6 class="font-weight-bold mb-1">Email Us</h6>
+                                <p class="mb-0"><a href="mailto:admin@sadisha.org"
+                                        class="text-muted">admin@sadisha.org</a></p>
+                            </div>
+                        </div>
+                        <div class="d-flex">
+                            <div class="mr-3 text-warning"><i class="fa fa-phone fa-lg"></i></div>
+                            <div>
+                                <h6 class="font-weight-bold mb-1">Call Us</h6>
+                                <p class="mb-0"><a href="tel:+919550895968" class="text-muted">+91-9550895968</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-4">
+                <div class="card h-100 shadow-sm border-0">
+                    <div class="card-body p-4">
+                        <h4 class="mb-4 text-primary font-weight-bold">Banking Details</h4>
+                        <p class="text-muted mb-3 small">For direct bank transfers, please use the following details:
+                        </p>
+                        <table class="table table-borderless table-sm text-muted small">
+                            <tbody>
+                                <tr>
+                                    <th scope="row" class="pl-0">Account Name:</th>
+                                    <td>Sadisha Foundation</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="pl-0">Account Number:</th>
+                                    <td>00000038903008378</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="pl-0">Bank Name:</th>
+                                    <td>State Bank of India (SBI)</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="pl-0">IFSC Code:</th>
+                                    <td>SBIN0011745</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="pl-0">Branch:</th>
+                                    <td>Jubilee Hills, Hyderabad</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <!-- Contact Form -->
+            <div class="col-lg-6 mb-4">
+                <div class="card shadow border-0 h-100">
+                    <div class="card-body p-4">
+                        <h4 class="mb-4 text-primary font-weight-bold">Send us a Message</h4>
+                        <form [formGroup]="contactUsForm">
+                            <div class="form-group mb-3">
+                                <label class="small text-muted font-weight-bold">FULL NAME</label>
+                                <input type="text" formControlName="name" class="form-control bg-light border-0 p-3"
+                                    placeholder="Enter your full name">
+                                <div class="text-danger small mt-1"
+                                    *ngIf="contactUsForm.get('name').touched && contactUsForm.get('name').hasError('required')">
+                                    Name is required</div>
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <label class="small text-muted font-weight-bold">EMAIL ADDRESS</label>
+                                <input type="email" formControlName="emailID" class="form-control bg-light border-0 p-3"
+                                    placeholder="Enter your email">
+                                <div class="text-danger small mt-1"
+                                    *ngIf="contactUsForm.get('emailID').touched && contactUsForm.get('emailID').hasError('required')">
+                                    Email is required</div>
+                                <div class="text-danger small mt-1"
+                                    *ngIf="contactUsForm.get('emailID').touched && contactUsForm.get('emailID').hasError('email')">
+                                    Please enter a valid email</div>
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <label class="small text-muted font-weight-bold">PHONE NUMBER</label>
+                                <input type="text" formControlName="phoneNumber"
+                                    class="form-control bg-light border-0 p-3" placeholder="Enter your phone number">
+                                <div class="text-danger small mt-1"
+                                    *ngIf="contactUsForm.get('phoneNumber').touched && contactUsForm.get('phoneNumber').hasError('required')">
+                                    Phone number is required</div>
+                            </div>
+
+                            <div class="form-group mb-4">
+                                <label class="small text-muted font-weight-bold">MESSAGE</label>
+                                <textarea formControlName="message" class="form-control bg-light border-0 p-3" rows="4"
+                                    placeholder="How can we help you?"></textarea>
+                                <div class="text-danger small mt-1"
+                                    *ngIf="contactUsForm.get('message').touched && contactUsForm.get('message').hasError('required')">
+                                    Message is required</div>
+                            </div>
+
+                            <div *ngIf="isResponceSuccess" class="alert alert-success alert-dismissible fade show"
+                                role="alert">
+                                {{serverResponce}}
+                                <button type="button" class="close" (click)="hideAlert()" data-dismiss="alert"
+                                    aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+
+                            <button type="submit" (click)="sendDetails()"
+                                class="btn btn-primary btn-block py-3 font-weight-bold shadow-sm">SEND MESSAGE</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Map Section -->
+            <div class="col-lg-6 mb-4">
+                <div class="card shadow border-0 h-100 overflow-hidden">
+                    <iframe
+                        src="https://maps.google.com/maps?q=Flat+No.201,+Plot+No.428,+Street+No.9,+Brindavanam,+Kakatiya+Hills,+Madhapur,+Hyderabad,+Telangana,+500081&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                        class="map w-100 h-100" frameborder="0" style="border:0; min-height: 450px;"
+                        allowfullscreen=""></iframe>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-5">
+            <p class="text-muted mb-3">Looking for frequently asked questions?</p>
+            <button class="btn btn-outline-secondary rounded-pill px-4" [routerLink]="['/faq']">Visit FAQ Page</button>
+        </div>
+    </div>
+</div>

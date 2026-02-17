@@ -1,0 +1,32 @@
+<div class="col-md-12 animated rotateInUpLeft">
+  <div class="card w-100 m-auto">
+    <h2 class="text-center">Selected List of GATE Coaching - 2025</h2>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table text-center">
+          <thead class="table-dark">
+          <tr>
+            <td>S.NO</td>
+            <th>NAME</th>
+            <th>PARENT NAME</th>
+            <th>LOCATION</th>
+            <th>COLLEGE</th>
+            <th>GRADUATION YEAR</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let result of finalResult; let i = index">
+            <td>{{i + 1}}</td>
+            <td>{{result.name}}</td>
+            <td>{{result.parentName}}</td>
+            <td>{{result.location}}</td>
+            <td>{{result.college}}</td>
+            <td>{{result.graduationYear}}</td>
+          </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

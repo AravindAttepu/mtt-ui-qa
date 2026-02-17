@@ -1,0 +1,131 @@
+<div class="verification-container">
+  <h2 class="title">Student Verification</h2>
+
+  <!-- 🔹 Search Section -->
+  <div class="search-box">
+    <input
+      type="text"
+      placeholder="Enter Username"
+      [(ngModel)]="userName"
+      class="search-input"
+    />
+    <input
+      type="text"
+      placeholder="Enter Contact Number"
+      [(ngModel)]="contactNumber"
+      class="search-input"
+    />
+    <input
+      type="text"
+      placeholder="Enter Aadhar Number"
+      [(ngModel)]="aadharNumber"
+      class="search-input"
+    />
+    <button (click)="searchStudent()" class="search-btn">Search</button>
+  </div>
+
+  <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
+
+  <!-- 🔹 Student Details -->
+  <div *ngIf="studentDetails" class="details-card">
+    <!-- 🖼️ Photo Section -->
+    <div class="photo-section text-center">
+
+      <!-- Existing student photo -->
+      <img
+        *ngIf="studentDetails?.studentPhotoUrl && !capturedImage"
+        [src]="studentDetails.studentPhotoUrl"
+        alt="Student Photo"
+        class="student-photo"
+      />
+
+      <!-- 📸 Capture / Retake Photo Button -->
+      <div
+        class="button-group mt-2"
+        *ngIf="!capturedImage"
+      >
+        <button
+          class="btn btn-primary capture-btn"
+          (click)="toggleWebcam()"
+        >
+          {{ showWebcam ? 'Close Camera' :
+          (studentDetails?.studentPhotoUrl ? '📸 Retake Photo' : '📸 Capture Photo') }}
+        </button>
+      </div>
+
+      <!-- 🎥 Webcam live feed -->
+      <div *ngIf="showWebcam" class="webcam-wrapper mt-3">
+        <webcam
+          [trigger]="triggerObservable"
+          (imageCapture)="handleImage($event)"
+          [videoOptions]="videoOptions"
+          [height]="videoHeight"
+          [width]="videoWidth"
+        ></webcam>
+
+        <div class="button-group mt-2">
+          <button class="btn btn-success" (click)="capturePhoto()">Take Snapshot</button>
+          <button class="btn btn-secondary" (click)="cancelWebcam()">Cancel</button>
+        </div>
+      </div>
+
+      <!-- 🖼️ Captured Preview -->
+      <div *ngIf="capturedImage" class="preview-wrapper mt-3">
+        <img [src]="capturedImage" alt="Captured Preview" class="captured-preview" />
+        <div class="button-group mt-2">
+          <button class="btn btn-success" (click)="uploadCapturedImage()">Upload Photo</button>
+          <button class="btn btn-danger" (click)="retakePhoto()">Retake</button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- 🧾 Info Section -->
+    <div class="info-section">
+      <h3>Registration No: {{ studentDetails?.userName || '—' }}</h3>
+
+      <div class="grid">
+        <div class="label">Student Name</div>
+        <div class="value">{{ studentDetails?.studentName || '—' }}</div>
+
+        <div class="label">Parent Name</div>
+        <div class="value">{{ studentDetails?.parentName || '—' }}</div>
+
+        <div class="label">Contact Number</div>
+        <div class="value">{{ studentDetails?.contactNumber || '—' }}</div>
+
+        <div class="label">Aadhar Number</div>
+        <div class="value">{{ studentDetails?.aadharNumber || '—' }}</div>
+
+        <div class="label">Zone</div>
+        <div class="value">{{ studentDetails?.zone || '—' }}</div>
+
+        <div class="label">Exam Centre</div>
+        <div class="value">{{ studentDetails?.examCentreName || '—' }}</div>
+
+        <div class="label">Verification</div>
+        <div class="value">{{(studentDetails?.verificationStatus ||
+            studentDetails?.verification_status) === 'VERIFIED'
+            ? 'Verified ✅'
+            : 'Not Verified ❌'}}
+        </div>
+      </div>
+
+      <button
+        class="verify-btn"
+        (click)="verifyStudent()"
+        [disabled]="
+        (studentDetails?.verificationStatus ||
+          studentDetails?.verification_status) === 'VERIFIED'
+      "
+      >
+        {{
+        (studentDetails?.verificationStatus ||
+        studentDetails?.verification_status) === 'VERIFIED'
+        ? 'Verified'
+        : 'Verify'
+        }}
+      </button>
+    </div>
+  </div>
+</div>
+

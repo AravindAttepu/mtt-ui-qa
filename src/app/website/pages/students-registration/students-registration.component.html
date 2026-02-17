@@ -1,0 +1,372 @@
+<app-hero-image [heading]="'Student Registration'" [bgImageClass]="'contact-us'"></app-hero-image>
+
+
+<div class="row">
+  <div class="reg-form col-12">
+
+   <ng-container>
+     <div style='color:#ff7355' class="text-center f-22 m-t-32 m-b-20 red">
+      <b>
+        <!--<a class="terms" href="/assets/registration-guidelines.html" target="_blank" style="color:red;"> -->
+            <U> REGISTRATIONS 2025 ARE CLOSED !!</U>
+      </b>
+  </div>
+</ng-container>
+
+    <!-- Form start here
+    <ng-container *ngIf="showForm && !isFormSubmitted">
+      <h3>
+        <a class="terms" href="/assets/registration-guidelines.html" target="_blank" style="color:red;">
+          <U> CLICK HERE TO READ THE INSTRUCTIONS BEFORE REGISTRATION !!</U></a>
+      </h3>
+     <button (click)="openModal()"
+  style="
+    background-color: #ff0000;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+  ">
+  ▶️ Watch The Full YouTube Video For All The Details On Sadisha Math Talent Test
+</button>
+
+
+      <div *ngIf="videoModalVisible" class="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center">
+  <div class="bg-white p-4 rounded-lg relative w-[90%] md:w-[60%]">
+    <button (click)="closeModal()" class="absolute top-2 right-3 text-xl font-bold">✕</button>
+    <iframe *ngIf="safeVideoURL"
+      [src]="safeVideoURL"
+      width="100%" height="315"
+      frameborder="0"
+      allow="autoplay; encrypted-media"
+      allowfullscreen>
+    </iframe>
+  </div>
+</div>
+
+
+
+      <h3 class="primary-text m-l-16 text-center f-22 m-t-32 m-b-20 font-bold">
+       <b> Registration Form </b>
+      </h3>
+
+      <form [formGroup]="registrationForm" (submit)="registerStudent() ">
+        <div class="row">
+          <div class="form-group col-12 col-sm-6 col-md-4">
+            <label class="label">
+              Student Surname(as per aadhar) <span class="required-star">*</span></label>
+            <input type="text" pattern="[a-zA-Z ]*" oninvalid="setCustomValidity('Please enter on alphabets only. ')"
+                   minlength="3" formControlName="surName" class="form-control" id="surName" />
+            <div class="f-14 error-message">
+          <span *ngIf="
+            (registrationForm.get('surName').touched ||
+              formSubmitted) &&
+            registrationForm.get('surName').hasError('required')
+            ">
+            Please Enter Surname
+          </span>
+
+              <span *ngIf="
+          (registrationForm.get('surName').touched ||
+            formSubmitted) &&
+          (registrationForm.get('surName')?.value?.length > 0) &&
+          (registrationForm.get('surName')?.value?.length < 03 ||
+            registrationForm.get('surName').hasError('pattern'))
+        ">
+            Surname should be minimum 3 characters and should contain alphabets only.
+          </span>
+
+            </div>
+          </div>
+          <div class="form-group col-12 col-sm-6 col-md-4">
+            <label class="label">
+              Student Name(as per aadhar) <span class="required-star">*</span></label>
+            <input type="text" pattern="[a-zA-Z ]*" oninvalid="setCustomValidity('Please enter on alphabets only. ')"
+                   formControlName="studentName" class="form-control" id="studentName" />
+            <div class="f-14 error-message">
+          <span *ngIf="
+            (registrationForm.get('studentName').touched ||
+              formSubmitted) &&
+            registrationForm.get('studentName').hasError('required')
+          ">
+            Please Enter Student Name
+          </span>
+
+              <span *ngIf="
+          (registrationForm.get('studentName').touched ||
+            formSubmitted) &&
+            registrationForm.get('studentName').hasError('pattern')
+        ">
+            Student Name should contain alphabets only.
+          </span>
+            </div>
+          </div>
+          <div class="form-group col-12 col-sm-6 col-md-4">
+            <label class="label">
+              Parent Name <span class="required-star">*</span></label>
+            <input type="text" formControlName="parentName" class="form-control" id="parentName" />
+            <div class="f-14 error-message" *ngIf="
+            (registrationForm.get('parentName').touched || formSubmitted) &&
+            registrationForm.get('parentName').hasError('required')
+          ">
+              Please Enter Parent Name
+            </div>
+          </div>
+
+          <div class="form-group col-12 col-sm-6 col-md-4">
+            <label class="label">
+              Gender <span class="required-star">*</span></label>
+            <ng-select [items]="genders" formControlName="gender" id="gender" name="gender" [clearable]="false">
+            </ng-select>
+            <div class="f-14 error-message" *ngIf="
+            (registrationForm.get('gender').touched || formSubmitted) &&
+            registrationForm.get('gender').hasError('required')
+          ">
+              Please Select Gender
+            </div>
+          </div>
+
+          <div class="form-group col-12 col-sm-6 col-md-4">
+            <label class="label">
+              Zone <span class="required-star">*</span></label>
+            <ng-select [items]="districtsList" formControlName="zone" id="zone" name="zone" bindLabel="name"
+                       [clearable]="false" (change)="onSelectDistrict()">
+            </ng-select>
+            <div class="f-14 error-message" *ngIf="
+            (registrationForm.get('zone').touched || formSubmitted) &&
+            registrationForm.get('zone').hasError('required')
+          ">
+              Please Select Zone
+            </div>
+          </div>
+          <div class="form-group col-12 col-sm-6 col-md-4">
+            <label class="label">
+              Mandal/Taluk <span class="required-star">*</span></label>
+            <ng-select [items]="mandalsList" formControlName="mandal" id="mandal" name="mandal" bindLabel="name"
+                       [clearable]="false" (change)="onSelectMandal()">
+            </ng-select>
+            <div class="f-14 error-message" *ngIf="
+            (registrationForm.get('mandal').touched || formSubmitted) &&
+            registrationForm.get('mandal').hasError('required')
+          ">
+              Please Select Mandal/Taluk
+            </div>
+          </div>
+
+          <div class="form-group col-12 col-sm-6 col-md-4">
+            <label class="label">Select School <span class="required-star">*</span></label>
+            <ng-select [items]="schoolsList" formControlName="schoolName" id="schoolName" name="schoolName"
+                       [clearable]="false">
+            </ng-select>
+            <div class="f-14 error-message" *ngIf="
+            (registrationForm.get('schoolName').touched || formSubmitted) &&
+            registrationForm.get('schoolName').hasError('required')
+          ">
+              Please Select School
+            </div>
+          </div> -->
+
+<!--          <div class="form-group col-12 col-sm-6 col-md-4">-->
+<!--            <label class="label">Select Exam Center <span class="required-star">*</span></label>-->
+<!--            <ng-select [items]="examCentersList" formControlName="examCenterName" id="examCenterName"-->
+<!--                       name="examCenterName" [clearable]="false">-->
+<!--            </ng-select>-->
+<!--            <div class="f-14 error-message" *ngIf="-->
+<!--            (registrationForm.get('examCenterName').touched || formSubmitted) &&-->
+<!--            registrationForm.get('examCenterName').hasError('required')-->
+<!--          ">-->
+<!--              Please Select Exam Center-->
+<!--            </div>-->
+<!--          </div>-->
+
+         <!-- <div class="form-group col-12 col-sm-6 col-md-4">
+            <label class="label">
+              Contact Number <span class="required-star">*</span></label>
+            <input type="text" numbersOnly maxlength="10" minlength="10" formControlName="contactNumber"
+                   class="form-control" id="contactNumber" />
+            <div class="f-14 error-message">
+          <span *ngIf="
+              (registrationForm.get('contactNumber').touched ||
+                formSubmitted) &&
+              registrationForm.get('contactNumber').hasError('required')
+            ">
+            Please Enter Contact Number
+          </span>
+
+              <span *ngIf="
+              (registrationForm.get('contactNumber').touched ||
+                formSubmitted) &&
+              registrationForm.get('contactNumber')?.value?.length > 0 &&
+                registrationForm.get('contactNumber')?.value?.length < 10
+            ">
+            Please Enter Valid Contact Number
+          </span>
+            </div>
+          </div>
+
+          <div class="form-group col-12 col-sm-6 col-md-4">
+            <label class="label">
+              Aadhar Number <span class="required-star">*</span></label>
+            <input type="text" numbersOnly maxlength="12" minlength="12" formControlName="aadharNumber"
+                   class="form-control" id="aadharNumber" />
+
+            <div class="f-14 error-message">
+          <span *ngIf="
+              (registrationForm.get('aadharNumber').touched ||
+                formSubmitted) &&
+              registrationForm.get('aadharNumber')?.value?.length > 0 &&
+                registrationForm.get('aadharNumber')?.value?.length < 12
+            ">
+            Please Enter Valid Aadhar Number
+          </span>
+            </div>
+          </div>
+
+          <div class="form-group col-12 col-sm-6 col-md-4">
+            <label class="label"> Secondary Contact Number </label>
+            <input type="text" numbersOnly maxlength="10" minlength="10" formControlName="secondaryContact"
+                   class="form-control" id="secondaryContact" />
+
+            <div class="f-14 error-message">
+          <span *ngIf="
+              (registrationForm.get('secondaryContact').touched ||
+                formSubmitted) &&
+              registrationForm.get('secondaryContact')?.value?.length > 0 &&
+                registrationForm.get('secondaryContact')?.value?.length < 10
+            ">
+            Please Enter Valid Secondary Contact Number
+          </span>
+            </div>
+          </div>
+
+          <div class="form-group col-12 col-sm-6 col-md-4">
+            <label class="label">Email ID</label>
+            <input type="email"
+              formControlName="emailId"
+              maxlength="254"
+              class="form-control"
+              id="email"/>
+              <div class="f-14 error-message">
+              <span *ngIf="
+                (registrationForm.get('emailId').touched || formSubmitted) &&
+                registrationForm.get('emailId')?.errors?.emailId">
+              Please enter a valid email address
+              </span>
+              </div>
+          </div>
+
+          <div class="col-12 col-sm-6 col-md-4" style="padding-top: 15px;">
+            <label>
+              <input type="radio" name="imageChoice" value="webcam" (change)="imageChoice='webcam'"> Capture Image from Webcam
+            </label>
+            <label>
+              <input type="radio" name="imageChoice" value="upload" (change)="imageChoice='upload'"> Upload Image from Device
+            </label>
+          </div>
+
+          <div class="row mt-5" *ngIf="imageChoice==='upload'">
+            <div class="col">
+              <section appDragAndDrop (onFileDropped)="studentImageUploadFile($event)"
+                       class="dnd-container file-upload-wrapper">
+                <img *ngIf="!previewStudentImages" [src]="previewImage" class="preview" alt="image" />
+                <div class="position-relative" *ngIf="previewStudentImages">
+                  <img alt="student-image-preview" src="{{ previewStudentImages }}" class="m-1 preview-image" />
+                  <span class="position-absolute text-white" style="top: 0; right: 0" (click)="removeImg()">
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Flat_cross_icon.svg/1200px-Flat_cross_icon.svg.png"
+                  class="hover" style="margin-top: -5px" width="15" /></span>
+                </div>
+              </section>
+              <input type="file" class="form-control d-none" name="file" accept="image/jpeg" #ImageFileInput
+                     (change)="imageFileProgress($event)"/>
+              <button type="button" class="my-btn my-btn-primary w-100" (click)="ImageFileInput.click()">
+                Upload Student Photo
+              </button>
+              <div class="m-t-28 text-center" *ngIf="imageChoice==='upload'">
+                <button type="button" class="my-btn my-btn-primary w-100" (click)="resetImage()">
+                  Reset
+                </button>
+              </div>
+            </div>
+          </div>-->
+          <!-- Webcam area 
+          <div class="col-12 col-sm-6 col-md-4 mt-4" *ngIf="imageChoice==='webcam'" style="text-align: left;">
+            <button type="button" (click)="checkPermissions()" class="my-btn web-perms-btn">Webcam Permissions</button>
+            <p *ngIf="status">Status Here: {{status}}</p>
+          </div>
+          <div *ngIf="stream && imageChoice==='webcam'" class="row">-->
+          <!-- webcam image here 
+          <webcam [trigger]="$trigger" (imageCapture)="snapshot($event)" [allowCameraSwitch]="true"
+            (initError)="handleWebcamInitError($event)" [height]="480" [width]="640" [imageQuality]="1"
+            [videoOptions]="videoOptions"></webcam>
+          <div>
+            <button type="button" (click)="captureImage()" class="my-btn my-btn-primary">{{captureBtnLable}}</button>
+          </div>
+        </div>
+        <div *ngIf="imageChoice==='webcam'">-->
+          <!-- Preview Area 
+          <img [src]="webcamPreviewImage" *ngIf="webcamPreviewImage" height="480" width="640" />
+        </div>
+        </div>
+        <div class="m-t-28 text-center">
+          <label class="label">
+            <input type="checkbox" formControlName="TandC" required />&nbsp;
+            <a class="terms" href="/assets/terms.html" target="_blank" style="color: blue;">
+              I Accept the Terms and Conditions.</a> And <a class="terms" href="/assets/registration-guidelines.html" target="_blank" style="color: blue;">
+            Adhere to the Registration Guidelines.</a>
+          </label>
+
+          <div class="f-14 error-message" *ngIf="formSubmitted && registrationForm.get('TandC').hasError('required')">
+            Please Accept Terms and Conditions
+          </div>
+        </div>
+        <div class="m-t-28 text-center">
+          <button type="submit" [disabled]="isAPILoading" class="my-btn my-btn-primary">
+            <span *ngIf="!isAPILoading">Register</span>
+            <span *ngIf="isAPILoading">Registering...</span>
+          </button>
+          <button type="button" class="my-btn cancel-btn m-l-28" (click)="resetForm()">
+            Reset
+          </button>
+        </div>
+      </form>
+      <p class="mt-4">
+        <b>NOTE: </b> If your school is not listed or you found it difficult to
+        register, please call
+        <a class="primary-text pointer" href="tel:9550895968">9550895968</a> or
+        email to
+        <a class="primary-text pointer" href="mailto:admin@sadisha.org">admin@sadisha.org</a>
+        with the details.
+      </p>
+
+    </ng-container>
+
+
+    <ng-container *ngIf="isFormSubmitted || regDone">
+
+      <div *ngIf="!showForm" class="text-center">
+        <h3 class="primary-text m-l-16 text-center f-22 m-t-32 m-b-20 font-bold">
+          Thank you for registering...!!<br>
+          <p style="color:red;">
+            Username : {{ newStudent.user.userName }}<br>
+            Password : {{ newStudent.user.password }}<br></p>
+        </h3>
+        <p style="color:red;"><b>Please remember/copy the Username and Password.</b></p>
+        <h1 class="welcome_title text-center m-t-32 animated bounceInLeft">
+          <a style="color:red;" href="/login" class="pointer"><u>Click here</u></a> to login with username and password and download hall ticket
+        </h1>
+        <h1 class="welcome_title text-center m-t-32 animated bounceInLeft">
+          Please download your hall ticket and carry it to the exam center.</h1>
+        <p><b>Candidate must bring the printed or electronic-copy of the Hall-Ticket.
+          Otherwise the candidate is not allowed to write the exam</b>
+        <div class="text-center">
+          <button type="button" class="my-btn my-btn-primary" (click)="download()">Download</button>
+        </div>
+      </div>
+      <a (click)="openRegForm()" class="primary-text pointer link register-link m-l-28">Register New Student</a>
+    </ng-container>-->
+  </div>
+</div>

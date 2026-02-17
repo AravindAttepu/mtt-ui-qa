@@ -1,0 +1,128 @@
+/* Reset some default Bootstrap styles */
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    padding: 40px;
+}
+
+.student-details {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.student-details__title {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.student-details__list {
+    padding: 0;
+    list-style-type: none;
+}
+
+.student-details__item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.student-details__key {
+    flex: 1;
+    font-weight: bold;
+}
+
+.student-details__value {
+    flex: 2;
+}
+
+.student-details__photo {
+    text-align: right;
+    margin-top: 20px; /* Adjust the spacing as needed */
+}
+
+.student-details__photo-image {
+    max-width: 100px; /* Adjust the size as needed */
+    max-height: 100px; /* Adjust the size as needed */
+    border-radius: 50%; /* Create a circular photo */
+}
+
+.button-wrapper {
+    text-align: center;
+}
+
+.my-btn-primary {
+    background-color: #6e63ff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.my-btn-primary:hover {
+    background-color: #554bcf;
+}
+
+.image-container {
+    text-align: center;
+}
+
+.image {
+    border: 1px solid lightgray;
+    background-color: white;
+    width: 100%;
+    max-height: 60vh; /* Adjust this value as needed */
+    position: relative;
+    overflow: hidden;
+}
+
+@media (max-width: 768px) {
+    .image {
+        max-height: 40vh; /* Adjust this value for smaller screens */
+    }
+}
+
+.image-choice-btn {
+  background-color: #ff7355; /* Bright, noticeable color */
+  color: white;
+  font-weight: bold;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.image-choice-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.image-choice-btn.active {
+  background-color: #ff4d2e; /* Slightly darker for active */
+  box-shadow: 0 0 15px rgba(255,115,85,0.6);
+}
+
+.web-perms-btn {
+  background-color: #745cf2; /* Purple, can change to any color you like */
+  color: #fff;               /* White text */
+  border: none;              /* Remove default border */
+  padding: 0.5rem 1rem;      /* Add some padding */
+  border-radius: 5px;        /* Rounded corners */
+  cursor: pointer;           /* Pointer cursor on hover */
+  transition: background-color 0.3s ease;
+}
+
+.web-perms-btn:hover {
+  background-color: #5930b3; /* Darker shade on hover */
+}
+
+
+

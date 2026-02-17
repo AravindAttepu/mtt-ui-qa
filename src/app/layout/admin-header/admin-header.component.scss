@@ -1,0 +1,65 @@
+@import '../../../assets/scss/variables';
+
+.header {
+    position: static;
+    z-index: 100;
+    color: $white;
+    background-color: $dark-bg-color;
+    padding-top: 0;
+    padding-bottom: 0;
+
+    &__logout {
+        height: 1.5625rem;
+    }
+
+    &__profile {
+        img {
+            width: 2rem;
+            height: 2rem;
+            border-radius: 100%;
+        }
+    }
+
+    .nav-link {
+        color: $white;
+    }
+
+    .logo-img {
+        max-height: 3.75rem;
+    }
+}
+
+.user-info-mobile {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    margin-right: 1rem;
+}
+
+.user-avator {
+    display: inline-flex;
+    width: 36px;
+    height: 36px;
+    align-items: center;
+    justify-content: center;
+    background: #fe1493;
+    border-radius: 18px;
+    margin-right: 20px;
+}
+
+.navbar-nav {
+    align-items: center;
+}
+
+.nav-item {
+    cursor: pointer;
+
+    &:hover,
+    &.active {
+        background-color: $primaryHover;
+    }
+}
+
+.navbar-light .navbar-toggler {
+    border-color: $white;
+}

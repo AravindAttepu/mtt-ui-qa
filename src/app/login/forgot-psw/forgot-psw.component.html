@@ -1,0 +1,37 @@
+<div class="forgot-psw">
+    <div class="forgot-psw__overlay row m-0">
+        <div class="col-md-6 text-sm-center d-flex forgot-psw__left animated bounceInLeft">
+            <h1 class="white-color">Enter your <span class="primary-color">mobile number </span> to retrieve username/password! </h1>
+        </div>
+        <div class="col-md-6 d-flex forgot-psw__right">
+            <form [formGroup]="forgotForm" (submit)="submit()">
+                <div class="forgot-psw__form card m-r-32 animated bounceInDown">
+                    <h4 class="forgot-psw__header">Forgot Password</h4>
+                    <div class="forgot-psw__form-group">
+                        <label> Mobile Number</label>
+                        <input type="text" numbersOnly maxlength="10" minlength="10" class="form-control"
+                            formControlName="phoneNumber" placeholder="Enter your mobile number" />
+                        <div class="f-14 error-message">
+                            <span
+                                *ngIf="(forgotForm.get('phoneNumber').touched || formSubmitted) && forgotForm.get('phoneNumber').hasError('required')">
+                                Please Enter Mobile Number
+                            </span>
+
+                            <span
+                                *ngIf="(forgotForm.get('phoneNumber').touched || formSubmitted) && (forgotForm.get('phoneNumber')?.value?.length > 0 && forgotForm.get('phoneNumber')?.value?.length < 10)">
+                                Please Enter Valid Mobile Number
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="m-t-28 text-center">
+                        <button type="submit" class="my-btn my-btn-primary w-100">SUBMIT</button>
+                    </div>
+                    <div class="text-center m-t-20 f-l pointer">
+                        Already have an account? <a routerLink="/login"> Login </a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

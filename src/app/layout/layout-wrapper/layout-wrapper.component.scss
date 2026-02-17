@@ -1,0 +1,78 @@
+// Layout wrapper styling with proper mobile menu and scroll
+.content-wrapper {
+    height: calc(100vh - 60px); // Adjust based on header height
+    overflow: hidden;
+    position: relative;
+}
+
+.sidebar-overlay {
+    display: none;
+    position: fixed;
+    top: 60px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 998;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+
+    &--active {
+        display: block;
+        opacity: 1;
+    }
+}
+
+.app-sidebar {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    bottom: 0;
+    width: 250px;
+    background: #fff;
+    box-shadow: 6px 0 6px rgba(0, 0, 0, .1);
+    z-index: 999;
+    transition: transform 0.3s ease;
+    overflow-y: auto;
+
+    @media screen and (max-width: 767px) {
+        transform: translateX(-100%);
+
+        &--opened {
+            transform: translateX(0);
+        }
+    }
+
+    @media screen and (min-width: 768px) {
+        // Keep fixed on desktop
+        transform: none !important;
+    }
+}
+
+.app-content {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 100%;
+    background: #f5f7fa;
+
+    @media screen and (max-width: 767px) {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    @media screen and (min-width: 768px) {
+        margin-left: 250px; // Add margin for fixed sidebar
+        width: calc(100% - 250px);
+    }
+}
+
+.router-content {
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    @media screen and (max-width: 767px) {
+        padding-top: 0;
+    }
+}

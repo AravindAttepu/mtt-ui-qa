@@ -1,0 +1,531 @@
+@import '../../../../assets/scss/variables';
+
+:host {
+  display: block;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  .animate-fade-in {
+    animation: fadeIn 0.4s ease-out;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+
+  // Main Wrapper
+  .donation-wrapper {
+    background: #f8f9fa;
+    padding: 60px 0;
+    min-height: calc(100vh - 100px);
+  }
+
+  // Two-Column Grid
+  .donation-grid {
+    display: grid;
+    grid-template-columns: 1fr 420px;
+    gap: 60px;
+    align-items: start;
+
+    @media (max-width: 960px) {
+      grid-template-columns: 1fr;
+      gap: 40px;
+
+      .content-side {
+        order: 2;
+      }
+
+      .form-side {
+        order: 1;
+      }
+    }
+  }
+
+  // LEFT SIDE - Content
+  .content-side {
+    .content-image {
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 30px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+
+      img {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+        display: block;
+      }
+    }
+
+    .content-text {
+      .content-title {
+        font-size: 1.6rem;
+        font-weight: 800;
+        color: $primaryColor;
+        margin-bottom: 20px;
+        line-height: 1.3;
+        letter-spacing: -0.02em;
+      }
+
+      p {
+        color: #4a4a4a;
+        font-size: 0.95rem;
+        line-height: 1.7;
+        margin-bottom: 16px;
+      }
+    }
+
+    // Funds Usage Section
+    .funds-usage {
+      background: rgba($primaryColor, 0.05);
+      border-left: 4px solid $primaryColor;
+      border-radius: 0 8px 8px 0;
+      padding: 20px;
+      margin: 25px 0;
+
+      h4 {
+        font-size: 1rem;
+        font-weight: 700;
+        color: $primaryColor;
+        margin-bottom: 12px;
+      }
+
+      ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        li {
+          padding: 8px 0;
+          color: #4a4a4a;
+          font-size: 0.9rem;
+
+          a {
+            color: $primaryColor;
+            text-decoration: none;
+            font-weight: 500;
+
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+        }
+      }
+    }
+
+    .impact-highlights {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px 30px;
+      margin-top: 30px;
+      padding-top: 25px;
+      border-top: 1px solid #e5e7eb;
+
+      .highlight-item {
+        text-align: center;
+        min-width: 80px;
+
+        a {
+          text-decoration: none;
+          color: inherit;
+
+          &:hover {
+            .number {
+              color: $primaryColor;
+            }
+
+            .label {
+              text-decoration: underline;
+            }
+          }
+        }
+
+        .number {
+          display: block;
+          font-size: 1.8rem;
+          font-weight: 800;
+          color: $primaryColor;
+        }
+
+        .label {
+          font-size: 0.75rem;
+          color: #6b7280;
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+        }
+
+        .info {
+          display: block;
+          font-size: 0.7rem;
+          color: #9ca3af;
+          margin-top: 4px;
+          font-style: italic;
+        }
+      }
+    }
+  }
+
+  // RIGHT SIDE - Donation Form
+  .form-side {
+    background: white;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    position: sticky;
+    top: 20px;
+
+    @media (max-width: 960px) {
+      position: relative;
+      top: auto;
+    }
+  }
+
+  // Region Toggle (India/International)
+  .region-toggle {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    margin-bottom: 25px;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    overflow: hidden;
+
+    .region-btn {
+      padding: 12px 16px;
+      border: none;
+      background: white;
+      font-weight: 600;
+      font-size: 0.8rem;
+      color: #6b7280;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+
+      &:first-child {
+        border-right: 1px solid #e5e7eb;
+      }
+
+      &:hover {
+        background: #f9fafb;
+      }
+
+      &.active {
+        background: $primaryColor;
+        color: white;
+      }
+    }
+  }
+
+  // Form Title
+  .form-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: $primaryColor;
+    margin-bottom: 25px;
+    text-align: center;
+  }
+
+  // Amount Title
+  .amount-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 15px;
+  }
+
+  // Amount Buttons (2x2 grid)
+  .amount-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 12px;
+
+    .amount-btn {
+      padding: 16px;
+      border: 2px solid #e5e7eb;
+      border-radius: 8px;
+      background: white;
+      font-weight: 600;
+      font-size: 1rem;
+      color: #374151;
+      cursor: pointer;
+      transition: all 0.2s;
+
+      &:hover {
+        border-color: $primaryColor;
+        color: $primaryColor;
+      }
+
+      &.selected {
+        background: $primaryColor;
+        border-color: $primaryColor;
+        color: white;
+      }
+    }
+  }
+
+  // Impact Message
+  .impact-message {
+    background: #e0f2fe;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 0.85rem;
+    color: #0369a1;
+    text-align: center;
+    margin-bottom: 12px;
+  }
+
+  // Other Amount Input
+  .other-amount {
+    margin-bottom: 25px;
+
+    input {
+      width: 100%;
+      padding: 16px;
+      border: 2px solid #e5e7eb;
+      border-radius: 8px;
+      font-size: 1rem;
+      color: #374151;
+
+      &::placeholder {
+        color: #9ca3af;
+      }
+
+      &:focus {
+        outline: none;
+        border-color: $primaryColor;
+      }
+    }
+  }
+
+  // Donor Details Form
+  .donor-details {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 20px;
+
+    input {
+      width: 100%;
+      padding: 14px 16px;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      color: #374151;
+
+      &::placeholder {
+        color: #9ca3af;
+      }
+
+      &:focus {
+        outline: none;
+        border-color: $primaryColor;
+        box-shadow: 0 0 0 3px rgba($primaryColor, 0.1);
+      }
+    }
+
+    .tax-note {
+      background: #ecfdf5;
+      border-radius: 6px;
+      padding: 10px 14px;
+      color: #059669;
+      font-size: 0.85rem;
+      font-weight: 500;
+      margin: 0;
+
+      i {
+        margin-right: 6px;
+      }
+    }
+  }
+
+  // Payment Type
+  .payment-type {
+    margin-bottom: 20px;
+
+    h4 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #374151;
+      margin-bottom: 12px;
+    }
+
+    .payment-options {
+      display: flex;
+      gap: 12px;
+    }
+
+    .payment-option {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 14px;
+      border: 2px solid #e5e7eb;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+
+      input {
+        accent-color: $primaryColor;
+      }
+
+      .option-label {
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: #374151;
+      }
+
+      &:hover,
+      &.selected {
+        border-color: $primaryColor;
+      }
+    }
+  }
+
+  // Donate Button
+  .donate-btn {
+    width: 100%;
+    padding: 18px;
+    background: $primaryColor;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+
+    &:hover:not(:disabled) {
+      background: darken($primaryColor, 8%);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba($primaryColor, 0.3);
+    }
+
+    &:disabled {
+      background: #d1d5db;
+      cursor: not-allowed;
+    }
+  }
+
+  // Secure Note
+  .secure-note {
+    text-align: center;
+    margin-top: 14px;
+    color: #9ca3af;
+    font-size: 0.8rem;
+
+    i {
+      margin-right: 5px;
+    }
+  }
+
+  // INTERNATIONAL FORM
+  .international-form {
+    .form-title {
+      text-align: left;
+      margin-bottom: 25px;
+    }
+
+    .benevity-section {
+      background: #fffbeb;
+      border: 1px solid #fcd34d;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 25px;
+
+      h4 {
+        font-size: 1rem;
+        margin-bottom: 10px;
+        color: #1a1a2e;
+      }
+
+      p {
+        color: #6b7280;
+        font-size: 0.9rem;
+        margin-bottom: 15px;
+      }
+
+      .benevity-btn {
+        display: inline-block;
+        background: #f59e0b;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 6px;
+        font-weight: 600;
+        font-size: 0.85rem;
+        text-decoration: none;
+
+        &:hover {
+          background: #d97706;
+        }
+      }
+    }
+
+    .bank-section {
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 10px;
+      padding: 20px;
+
+      h4 {
+        font-size: 0.95rem;
+        color: $primaryColor;
+        margin-bottom: 15px;
+
+        i {
+          margin-right: 8px;
+        }
+      }
+
+      .bank-detail {
+        display: flex;
+        justify-content: space-between;
+        padding: 12px 0;
+        border-bottom: 1px solid #f3f4f6;
+
+        &:last-child {
+          border-bottom: none;
+        }
+
+        &.highlight {
+          background: rgba($primaryColor, 0.05);
+          margin: 0 -15px;
+          padding: 12px 15px;
+          border-radius: 6px;
+          border-bottom: none;
+        }
+
+        .label {
+          color: #6b7280;
+          font-size: 0.85rem;
+        }
+
+        .value {
+          font-weight: 600;
+          color: $primaryColor;
+          font-size: 0.9rem;
+        }
+      }
+    }
+
+    .help-note {
+      margin-top: 20px;
+      color: #6b7280;
+      font-size: 0.85rem;
+
+      a {
+        color: $primaryColor;
+        font-weight: 500;
+      }
+    }
+  }
+}

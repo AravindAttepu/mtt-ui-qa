@@ -1,0 +1,93 @@
+/* Tabs Container */
+.custom-tabs {
+  width: 100%;
+  overflow-x: auto;       /* allow scroll if content exceeds container */
+  padding: 0 12px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center; /* center content horizontally */
+  -webkit-overflow-scrolling: touch; /* smooth scroll on iOS */
+}
+
+.custom-tabs ul {
+  display: inline-block;  /* fit content width */
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  white-space: nowrap;    /* keep tabs in a single line */
+}
+nav{
+  margin-bottom:10px;
+  }
+.custom-tabs ul li {
+  display: inline-block;
+  padding: 10px 20px;
+  margin-right: 8px;
+  cursor: pointer;
+  white-space: nowrap;
+  font-weight: 500;
+  border-radius: 12px;
+
+  transition: all 0.3s;
+}
+
+.custom-tabs ul li.active {
+  color: #fff;
+  background-color: #0077cc;
+  border:24px;
+}
+
+
+
+
+/* Tabs List */
+.tabs-list {
+  display: flex;               /* flex for alignment */
+  justify-content: center;     /* center tabs on desktop */
+  flex-wrap: nowrap;           /* prevent wrapping */
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow-x: auto;            /* allow horizontal scroll if needed */
+  -webkit-overflow-scrolling: touch; /* smooth scroll on iOS */
+  width:fit-content;
+}
+
+/* Tab Items */
+.tabs-list li {
+  flex: 0 0 auto;              /* prevent shrinking */
+  padding: 12px 20px;
+  cursor: pointer;
+  white-space: nowrap;
+  font-weight: 500;
+  color: #555;
+  border-bottom: 3px solid transparent;
+  transition: color 0.3s, border-bottom 0.3s;
+}
+
+/* Active Tab */
+.tabs-list li.active {
+  color: #fff;                 /* change text color to white */
+  border-bottom: 3px solid #0077cc; /* keep bottom indicator if needed */
+  background-color: #0077cc;   /* optional: highlight tab background */
+}
+
+/* Hover */
+
+
+/* Mobile adjustments */
+@media screen and (max-width: 767px) {
+  .tabs-list {
+    justify-content: flex-start; /* scrollable from left */
+    padding: 0 0px;              /* spacing on sides */
+  }
+
+  .tabs-list li {
+    padding: 10px 16px;
+  }
+}
+
+/* Optional: hide scrollbar in webkit */
+.tabs-list::-webkit-scrollbar {
+  display: none;
+}

@@ -1,0 +1,385 @@
+.card-container {
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 10px 40px rgba(15, 23, 42, 0.08);
+  padding: 2rem;
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+.search-row {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+  align-items: center;
+}
+
+.search-input {
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  border: 1px solid #d4d4d8;
+  flex: 1;
+  font-size: 0.95rem;
+  transition: border-color 0.2s;
+
+  &:focus {
+    outline: none;
+    border-color: #6366f1;
+  }
+
+  &::placeholder {
+    color: #9ca3af;
+  }
+}
+
+.btn {
+  border: none;
+  border-radius: 8px;
+  padding: 0.75rem 1.5rem;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s;
+  font-size: 0.95rem;
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.btn-primary {
+  background: #6366f1;
+  color: #fff;
+  margin-right: 0.7rem;
+
+  &:hover:not(:disabled) {
+    background: #4f46e5;
+  }
+}
+
+.btn-light {
+  background: #e5e7eb;
+  color: #111827;
+
+  &:hover:not(:disabled) {
+    background: #d1d5db;
+  }
+}
+
+.btn-primary-search {
+  background: #6366f1;
+  color: #fff;
+
+  &:hover:not(:disabled) {
+    background: #4f46e5;
+  }
+}
+
+.btn-light-search {
+  background: #e5e7eb;
+  color: #111827;
+
+  &:hover:not(:disabled) {
+    background: #d1d5db;
+  }
+}
+
+.add-row {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.add-btn {
+  border-radius: 9999px;
+  padding: 0.65rem 1.5rem;
+  font-weight: 500;
+}
+
+.messages {
+  margin-bottom: 1rem;
+  min-height: 1.5rem;
+
+  .error-message,
+  .success-message {
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+    animation: slideIn 0.3s ease;
+  }
+
+  .error-message {
+    background: #fef2f2;
+    color: #dc2626;
+    border: 1px solid #fecaca;
+  }
+
+  .success-message {
+    background: #f0fdf4;
+    color: #16a34a;
+    border: 1px solid #bbf7d0;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Form Container
+.form-container {
+  margin-top: 1.5rem;
+  background: #fafafa;
+  border: 1px solid #e4e4e7;
+  border-radius: 12px;
+  padding: 2rem;
+
+  h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #111827;
+    margin-bottom: 0.5rem;
+  }
+}
+
+.required-legend {
+  font-size: 0.875rem;
+  color: #6b7280;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.required-indicator {
+  color: #dc2626;
+  font-weight: 600;
+  font-size: 1rem;
+  //margin-left: 0.25rem;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
+
+  label {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #374151;
+
+    input:not([type="checkbox"]) {
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      border: 1px solid #d4d4d8;
+      font-size: 0.95rem;
+      transition: all 0.2s;
+      background: white;
+
+      &:focus {
+        outline: none;
+        border-color: #6366f1;
+        box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+      }
+
+      &::placeholder {
+        color: #9ca3af;
+      }
+    }
+
+    // ng-select styling for district dropdown
+    ng-select {
+      ::ng-deep {
+        .ng-select-container {
+          height: 48px;
+          border-radius: 8px;
+          border: 1px solid #d4d4d8;
+          background: white;
+          padding: 0;
+
+          .ng-value-container {
+            padding: 0 1rem;
+            height: 100%;
+            align-items: center;
+
+            .ng-placeholder {
+              color: #9ca3af;
+            }
+
+            .ng-input {
+              top: 0;
+              padding: 0;
+            }
+          }
+
+          .ng-arrow-wrapper {
+            padding-right: 0.75rem;
+          }
+
+          &:hover {
+            border-color: #a1a1aa;
+          }
+        }
+
+        .ng-select.ng-select-focused .ng-select-container {
+          border-color: #6366f1;
+          box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+        }
+      }
+    }
+  }
+}
+
+.govt-checkbox {
+  grid-column: 1 / -1;
+  flex-direction: row !important;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+
+  input[type="checkbox"] {
+    width: 1.125rem;
+    height: 1.125rem;
+    cursor: pointer;
+    accent-color: #6366f1;
+    margin: 0;
+  }
+
+  span {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #374151;
+    cursor: pointer;
+  }
+}
+
+.form-actions {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: flex-start;
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #e5e7eb;
+}
+
+// Results Table
+.results-card {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid #e4e4e7;
+  background: #fafafa;
+}
+
+.schools-table {
+  width: 100%;
+  border-collapse: collapse;
+
+  th, td {
+    padding: 0.75rem;
+    border-bottom: 1px solid #e5e7eb;
+    text-align: left;
+  }
+
+  th {
+    font-weight: 600;
+    color: #ffffff;
+    background: #6366f1;
+  }
+
+  td {
+    color: #6b7280;
+  }
+}
+
+.inline-input {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  border: 1px solid #d4d4d8;
+  font-size: 0.9rem;
+
+  &:focus {
+    outline: none;
+    border-color: #6366f1;
+  }
+}
+
+.actions-cell {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.icon-btn {
+  background: #e9f5ff;
+  border: none;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+
+  i {
+    font-size: 1rem;
+    color: #2563eb;
+  }
+
+  &:hover {
+    background: #dbeafe;
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .search-row {
+    flex-direction: column;
+
+    .search-input {
+      width: 100%;
+    }
+
+    .btn {
+      width: 100%;
+    }
+  }
+
+   /* results-card horizontally scrollable on mobile */
+    .results-card {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch; // smoother scroll on iOS
+    }
+
+    .schools-table {
+      min-width: 600px; // or 700–800px if you want wider columns
+    }
+}

@@ -1,0 +1,60 @@
+<ng-container>
+    <app-hero-image [heading]="'Gallery'" [bgImageClass]="'contact-us'"></app-hero-image>
+    <div class="row">
+        <div class="container">
+            <div class="d-flex justify-content-center custom-tabs m-b-16 animated fadeInRight my-3">
+                <ul class="list-unstyled d-flex">
+                    <li [ngClass]="{'active': mediaType ==='photos'}" (click)="mediaType = 'photos'">Photos</li>
+                    <li [ngClass]="{'active': mediaType ==='videos'}" (click)="openVideos()">Videos</li>
+                </ul>
+            </div>
+
+            <div class="row  m-t-24 m-b-24" *ngIf="mediaType ==='videos'">
+                <div class="col-lg-6 col-sm-12  text-center video-wrapper mb-3"
+                    *ngFor="let video of galleryVideos; let i = index">
+                    <iframe width="100%" height="315" class="youtube-video" [src]="video.path" frameborder="0"
+                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen="">
+                    </iframe>
+                    <div class="image-description"> {{video.mediaDesc}}</div>
+                </div>
+            </div>
+
+            <div id="photos" class="row m-t-24 m-b-24" *ngIf="mediaType ==='photos'">
+                <div class="col-lg-4 col-sm-4 col-6 mb-4 text-center"
+                    *ngFor="let image of galleryImages; let i = index">
+                    <a class="image-wrapper mb-2">
+                        <div class="container" [id]="'gallery' + i">
+                            <img (click)="open(content, i)" [src]="image.path" alt="{{image.description}}"
+                            class="thumbnail img-thumbnail" [title]="image.description">
+                            <a [href]="'https://www.facebook.com/sharer.php?u=https://sadisha.org/gallery%23gallery' + i" class="address-nav__link social-icon btn">
+                                <span class="mdi mdi-share"></span>
+                            </a>
+                          </div>
+                    </a>
+                    <div class="image-description"> {{image.description}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ng-template #content let-modal>
+        <div class="modal-header">
+            <h4 class="modal-title text-center primary-color" id="modal-basic-title">Gallery Images view</h4>
+            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <ngb-carousel #carousel [activeId]="selectedIndex">
+                <ng-template ngbSlide *ngFor="let img of galleryImages; let i =index" id="ngb-slide-{{i}}">
+                    <div class="carousel-caption">
+                        <h3 class="white-color">{{img.mediaDesc}}</h3>
+                    </div>
+                    <div class="picsum-img-wrapper image-wrapper image-wrapper--modal">
+                        <img [src]="img.path" class="img-thumbnail img-thumbnail--modal" alt="{{img.description}}">
+                    </div>
+                </ng-template>
+            </ngb-carousel>
+        </div>
+    </ng-template>
+</ng-container>

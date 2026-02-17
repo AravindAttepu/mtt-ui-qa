@@ -1,0 +1,7 @@
+<div class="papers-list animated fadeInTopLeft container p-0" *ngIf="paperList.length>1">
+    <ul class="papers-list__wrapper list-unstyled text-black-50">
+        <li class="papers-list__item border text-nowrap px-3 border-bottom-0" *ngFor="let list of paperList" (click)="sendMessage(list)"
+        [ngClass]="{'active': selectedItem == list}" [routerLink]="'/talent-test/previous-papers/' + list.displayName" routerLinkActive="active">
+        {{list.displayName}}
+    </ul>
+</div>

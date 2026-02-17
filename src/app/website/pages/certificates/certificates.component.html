@@ -1,0 +1,98 @@
+<div class="container-fluid p-0 certificates-page">
+    <app-hero-image [bgImageClass]="'contact-us'" [heading]="'TRUST, TRANSPARENCY & TRIUMPH'"></app-hero-image>
+
+    <div class="container py-5">
+        <div class="text-center mb-5">
+            <h2 class="heading text-primary">Our Legal Compliance</h2>
+            <p class="intro mx-auto max-w-800">
+                Sadisha Foundation is a registered Non-Profit Organization under Indian laws. We maintain absolute
+                transparency in our operations and hold all necessary compliance certificates.
+            </p>
+            <p class="text-muted small"><em>* Click on any item to view or download the certificate in a new tab.</em>
+            </p>
+        </div>
+
+        <div class="row g-4 justify-content-center">
+            <div class="col-lg-4 col-md-6 mb-4" *ngFor="let cert of certificates">
+                <div class="card h-100 certificate-card shadow-sm border-0">
+                    <div class="card-body text-center p-4">
+                        <div class="cert-icon mb-3">{{ cert.icon }}</div>
+                        <h5 class="cert-title font-weight-bold mb-2">{{ cert.title }}</h5>
+                        <p class="cert-label text-primary font-weight-600 mb-3">{{ cert.label }}</p>
+                        <p class="cert-desc text-muted small mb-4">{{ cert.description }}</p>
+                        <div class="mt-auto">
+                            <a [href]="cert.link" target="_blank"
+                                class="btn btn-outline-primary btn-sm rounded-pill px-4">
+                                <span class="mdi mdi-download mr-1"></span> View / Download
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Transparency Section -->
+        <div class="transparency-section mt-5 p-5 bg-light rounded shadow-cream">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h3 class="font-weight-bold mb-3" style="color: #002e5b;">Why Transparency Matters</h3>
+                    <p class="text-muted" style="line-height: 1.8;">
+                        We share our legal and tax documents to build trust and help donors verify our compliance and
+                        tax benefit eligibility. Being accountable to our supporters and the communities we serve is
+                        fundamental to our mission.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- FAQ Section -->
+        <div class="faq-section mt-5">
+            <h3 class="font-weight-bold text-center mb-4" style="color: #002e5b;">Frequently Asked Questions</h3>
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="accordion" id="certFaq">
+                        <div class="card border-0 mb-3 shadow-sm rounded">
+                            <div class="card-header bg-white p-3 border-0" id="faq1">
+                                <h5 class="mb-0">
+                                    <button
+                                        class="btn btn-link text-dark font-weight-bold text-left w-100 d-flex justify-content-between align-items-center"
+                                        type="button" data-toggle="collapse" data-target="#collapse1">
+                                        Are donations tax deductible?
+                                        <span class="mdi mdi-plus"></span>
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="collapse1" class="collapse" aria-labelledby="faq1" data-parent="#certFaq">
+                                <div class="card-body text-muted pt-0 p-3">
+                                    Yes, contributions to Sadisha Foundation are eligible for tax exemption under
+                                    Section 80G of the Income Tax Act. You will receive a tax-deductible receipt for all
+                                    donations.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card border-0 mb-3 shadow-sm rounded">
+                            <div class="card-header bg-white p-3 border-0" id="faq2">
+                                <h5 class="mb-0">
+                                    <button
+                                        class="btn btn-link text-dark font-weight-bold text-left w-100 d-flex justify-content-between align-items-center"
+                                        type="button" data-toggle="collapse" data-target="#collapse2">
+                                        How can donors verify documents?
+                                        <span class="mdi mdi-plus"></span>
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="collapse2" class="collapse" aria-labelledby="faq2" data-parent="#certFaq">
+                                <div class="card-body text-muted pt-0 p-3">
+                                    You can verify our registration details on the NGO Darpan portal using our Unique
+                                    ID: <strong>TS/2022/0314957</strong>. You can also contact us at
+                                    <strong>admin@sadisha.org</strong> for any further clarifications.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

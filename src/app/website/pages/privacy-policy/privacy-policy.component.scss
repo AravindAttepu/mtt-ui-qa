@@ -1,0 +1,59 @@
+@import './../../../../assets/scss/variables';
+
+@import './../../../../assets/scss/variables';
+
+/* Header is no longer absolute, so we don't need padding-top offset */
+
+
+.subheading {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid #e5e7eb;
+    padding-bottom: 0.5rem;
+}
+
+.privacy-content {
+    background: #fff;
+    border-radius: 8px;
+    line-height: 1.8;
+    color: #212121;
+}
+
+.styled-list {
+    list-style-type: none;
+    padding-left: 0;
+
+    li {
+        position: relative;
+        padding-left: 1.5rem;
+        margin-bottom: 0.75rem;
+
+        &::before {
+            content: "•";
+            color: $primaryColor;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+    }
+}
+
+.link {
+    color: $primaryColor;
+    text-decoration: none;
+    font-weight: 500;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+.contact-box {
+    background-color: #f9fafb;
+}
+
+address {
+    font-style: normal;
+}

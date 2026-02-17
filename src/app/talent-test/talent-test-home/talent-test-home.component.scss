@@ -1,0 +1,155 @@
+@import './../../../assets/scss/variables';
+
+.mtt-page-wrapper {
+  background-color: #fff;
+
+  /* Custom Spacing */
+  .py-custom {
+    padding: 2.8rem 0;
+  }
+
+  .mb-custom {
+    margin-bottom: 2.8rem;
+  }
+
+  .section-title {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    font-size: clamp(1.4rem, 2.8vw, 1.68rem);
+    color: #1f2937;
+    text-transform: uppercase;
+  }
+
+  .main-feature-img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 20px;
+  }
+
+  .border-left-warning {
+    border-left: 5px solid $warning-color;
+  }
+
+  .custom-list {
+    li {
+      padding: 8px 0;
+      font-size: 1.1rem;
+      color: #4b5563;
+    }
+  }
+
+  /* Highlight Stats */
+  .highlight-stat-card {
+    transition: transform 0.3s;
+    border-bottom: 5px solid transparent;
+
+    .display-4 {
+      font-size: clamp(2.5rem, 6vw, 3.5rem);
+      line-height: 1;
+    }
+
+    &:hover {
+      transform: translateY(-5px);
+    }
+  }
+
+  .border-bottom-warning {
+    border-bottom-color: $warning-color !important;
+  }
+
+  .border-bottom-primary {
+    border-bottom-color: $primaryColor !important;
+  }
+
+
+  /* Process Cards */
+  .process-card {
+    transition: all 0.3s ease;
+    border-bottom: 4px solid transparent !important;
+
+    &:hover {
+      transform: translateY(-10px);
+      border-bottom-color: $warning-color !important;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1) !important;
+    }
+
+    .process-icon {
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  /* Info Panes */
+  .info-pane {
+    transition: all 0.3s ease;
+    border-top: 4px solid transparent;
+
+    &.border-top-primary {
+      border-top-color: $primaryColor;
+    }
+
+    &.border-top-warning {
+      border-top-color: $warning-color;
+    }
+
+    &:hover {
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08) !important;
+    }
+  }
+
+  /* Venue Cards Redesign */
+  .venue-card {
+    transition: transform 0.3s;
+
+    &:hover {
+      transform: scale(1.02);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1) !important;
+    }
+
+    .venue-details {
+      min-height: 120px;
+    }
+
+    .contact-strip {
+      background-color: #fcfcfc;
+      padding: 10px;
+      border-radius: 8px;
+    }
+  }
+
+  /* Professional Aim Section */
+  .aim-section {
+    background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+  }
+
+  /* Responsive */
+  @media screen and (max-width: 991px) {
+    .py-custom {
+      padding: 3rem 1rem;
+    }
+
+    .mb-custom {
+      margin-bottom: 3rem;
+    }
+
+    .section-title {
+      text-align: center;
+    }
+
+    .lead {
+      text-align: center;
+    }
+
+    .aim-section {
+      padding: 3rem 1rem !important;
+
+      .h4 {
+        font-size: 1.25rem;
+      }
+    }
+  }
+}

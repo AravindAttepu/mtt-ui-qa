@@ -1,0 +1,189 @@
+<div class="card-container">
+    <h2 class="title">Manage Schools</h2>
+
+    <!-- Search bar -->
+    <div class="search-row">
+      <input
+        type="text"
+        [(ngModel)]="name"
+        placeholder="School Name"
+        class="search-input"
+      />
+      <input
+        type="text"
+        [(ngModel)]="district"
+        placeholder="District"
+        class="search-input"
+      />
+      <button class="btn btn-primary-search" (click)="search()">
+        Search
+      </button>
+
+      <button class="btn btn-light-search" (click)="clearSearch()">
+        Clear
+      </button>
+    </div>
+
+    <!-- Add button -->
+    <div class="add-row">
+      <button class="btn btn-primary add-btn" (click)="startCreateNewSchool()">
+        + Add School
+      </button>
+    </div>
+    <!-- messages -->
+  <div class="messages">
+    <div *ngIf="errorMsg" class="error-message">
+      ⚠️ {{ errorMsg }}
+    </div>
+    <div *ngIf="successMsg" class="success-message">
+      ✅ {{ successMsg }}
+    </div>
+  </div>
+
+    <!-- results table -->
+    <div class="results-card" *ngIf="results.length > 0 && newSchoolMode == false">
+      <table class="schools-table">
+        <thead>
+        <tr>
+          <th>Name</th>
+          <th>Village</th>
+          <th>Mandal</th>
+          <th>District</th>
+          <th>Is Govt</th>
+          <th style="width: 130px;"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let s of results">
+          <!-- Name -->
+          <td>
+            <span *ngIf="editingId !== s.id">{{ s.schoolName }}</span>
+            <input *ngIf="editingId === s.id"
+                   [(ngModel)]="s.schoolName"
+                   class="inline-input" />
+          </td>
+
+          <!-- Village -->
+          <td>
+            <span *ngIf="editingId !== s.id">{{ s.village }}</span>
+            <input *ngIf="editingId === s.id"
+                   [(ngModel)]="s.village"
+                   class="inline-input" />
+          </td>
+
+          <!-- Mandal -->
+          <td>
+            <span *ngIf="editingId !== s.id">{{ s.mandal }}</span>
+            <input *ngIf="editingId === s.id"
+                   [(ngModel)]="s.mandal"
+                   class="inline-input" />
+          </td>
+
+          <!-- District -->
+          <td>
+            <span *ngIf="editingId !== s.id">{{ s.district }}</span>
+            <input *ngIf="editingId === s.id"
+                   [(ngModel)]="s.district"
+                   class="inline-input" />
+          </td>
+
+          <!-- Govt -->
+          <td>
+              <span *ngIf="editingId !== s.id">
+                {{ s.isGovt ? 'Govt' : 'Private' }}
+              </span>
+            <input *ngIf="editingId === s.id"
+                   type="checkbox"
+                   [(ngModel)]="s.isGovt" />
+          </td>
+
+          <!-- Actions -->
+          <td class="actions-cell">
+            <button *ngIf="editingId !== s.id"
+                    class="icon-btn"
+                    (click)="startEdit(s)">
+              <i class="fa fa-pencil"></i>   <!-- or fa fa-edit if you prefer -->
+            </button>
+
+            <ng-container *ngIf="editingId === s.id">
+              <button class="btn btn-primary" (click)="saveEdit(s)">
+                Save
+              </button>
+              <button class="btn btn-light" (click)="cancelEdit()">
+                Cancel
+              </button>
+            </ng-container>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- create new school block when no results -->
+  <div class="results-card" *ngIf="newSchoolMode">
+    <h3>Create school</h3>
+    <p class="required-legend">
+      <span class="required-indicator">*</span> indicates required field
+    </p>
+    <div class="form-grid">
+      <!-- School Name -->
+      <label>
+        <span>School Name <span class="required-indicator">*</span></span>
+        <input
+          type="text"
+          [(ngModel)]="newSchool.schoolName"
+          class="inline-input"
+        />
+      </label>
+
+      <!-- Village -->
+      <label>
+        <span>Village <span class="required-indicator">*</span></span>
+        <input
+          [(ngModel)]="newSchool.village"
+          class="inline-input"
+        />
+      </label>
+
+      <!-- Mandal -->
+      <label>
+        <span>Mandal <span class="required-indicator">*</span></span>
+        <input
+          [(ngModel)]="newSchool.mandal"
+          class="inline-input"
+        />
+      </label>
+
+      <!--District -->
+      <label>
+        <span>District <span class="required-indicator">*</span></span>
+        <ng-select
+          [items]="districtsList"
+          [(ngModel)]="newSchool.district"
+          bindValue="zoneName"
+          bindLabel="zoneName"
+          [clearable]="false"
+          [loading]="loadingZones">
+        </ng-select>
+      </label>
+
+      <!-- Is Govt -->
+      <label class="govt-checkbox">
+        <input
+          type="checkbox"
+          [(ngModel)]="newSchool.isGovt"
+        />
+        <span>Is Govt</span>
+      </label>
+    </div>
+
+    <button class="btn btn-primary" (click)="createNewSchool()">
+      Save School
+    </button>
+    <button class="btn btn-light" (click)="newSchoolMode = false">
+      Cancel
+    </button>
+  </div>
+</div>
+
+

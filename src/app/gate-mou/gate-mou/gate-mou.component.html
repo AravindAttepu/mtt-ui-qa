@@ -1,0 +1,19 @@
+<div>
+  <app-hero-image [heading]="'Campus GATE Coaching'" [bgImageClass]="'contact-us'"></app-hero-image>
+  <div class="talent-test bg-white pt-3">
+    <div class="container-fluid p-0">
+      <nav class="custom-tabs">
+        <ul class="tabs-list">
+          <li [routerLink]="['/gate-mou/home']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+            Home
+          </li>
+
+
+        </ul>
+      </nav>
+      <div>
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+</div>

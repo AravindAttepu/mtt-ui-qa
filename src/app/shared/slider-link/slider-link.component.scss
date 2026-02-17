@@ -1,0 +1,51 @@
+
+  .slider {
+        padding: 10px;
+        background: linear-gradient(45deg,#715ef6,#9435a9);
+    &__para{
+      margin: 0;
+      color: white;
+      font-size: 17px;
+      font-weight: 500;
+      padding: 0 !important;
+       animation: news 30s infinite linear;
+  }
+.marquee {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 100%;            /* take full container width */
+  box-sizing: border-box;
+}
+
+.marquee a {
+  display: inline-block;
+  padding-left: 100%;     /* start fully outside right */
+  animation: marquee-scroll 15s linear infinite;
+}
+
+.marquee a:hover {
+  animation-play-state: paused; /* ⏸ stop when hovered */
+}
+@keyframes marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+  .link {
+    padding: 5px;
+
+  }
+  }
+  @keyframes news {
+    0%{transform: translateX(100%)}
+    25%{transform: translateX(50%)}
+    50%{transform: translateX(0%)}
+    75%{transform: translateX(-50%)}
+    100%{transform: translateX(-100%)}
+
+}

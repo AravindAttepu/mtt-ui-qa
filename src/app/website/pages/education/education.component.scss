@@ -1,0 +1,156 @@
+@import './../../../../assets/scss/variables';
+
+.education-page {
+    background-color: #fff;
+}
+
+/* Custom Spacing System */
+.py-custom {
+    padding: 5rem 0;
+}
+
+.mb-custom {
+    margin-bottom: 4rem;
+}
+
+.section-title {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    font-size: clamp(2rem, 4vw, 2.5rem);
+    color: #1f2937;
+    text-transform: uppercase;
+}
+
+.intro-block {
+    .lead {
+        font-size: 1.2rem;
+        line-height: 1.7;
+    }
+}
+
+/* Program Section Styling */
+.program-section {
+    transition: transform 0.3s ease;
+}
+
+.program-heading {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    font-size: 1.8rem;
+    color: $primaryColor;
+    letter-spacing: 0.5px;
+}
+
+.program-summary {
+    font-size: 1.05rem;
+    line-height: 1.6;
+}
+
+.benefit-list {
+    li {
+        margin-bottom: 1rem;
+        font-size: 1rem;
+        display: flex;
+        align-items: center;
+        color: #4b5563;
+
+        i {
+            font-size: 1.2rem;
+            width: 25px;
+            text-align: center;
+        }
+
+        strong {
+            color: #1f2937;
+            margin-right: 8px;
+        }
+    }
+}
+
+.program-photo {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 12px;
+    transition: all 0.5s ease;
+
+    &:hover {
+        transform: scale(1.02);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15) !important;
+    }
+}
+
+/* Dividers & Borders */
+.section-divider {
+    border: 0;
+    border-top: 1px solid #f0f0f0;
+    margin: 3rem auto;
+    width: 80%;
+}
+
+.border-warning-bottom {
+    border-bottom: 4px solid $warning-color !important;
+}
+
+/* CTA Banner Modernization */
+.cta-banner {
+    .cta-content {
+        max-width: 1000px;
+        margin: 0 auto;
+        border: none;
+        box-shadow: 0 5px 25px rgba(0, 0, 0, 0.05) !important;
+
+        h2 {
+            font-family: 'Oswald', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+    }
+}
+
+/* Responsive Adjustments */
+@media screen and (max-width: 991px) {
+    .py-custom {
+        padding: 3rem 1rem;
+    }
+
+    .mb-custom {
+        margin-bottom: 3rem;
+    }
+
+    .program-info-box {
+        text-align: center;
+        padding: 0 !important;
+
+        .benefit-list li {
+            justify-content: center;
+            text-align: left;
+        }
+    }
+
+    .program-image-container {
+        padding: 0 !important;
+        margin-bottom: 2rem;
+    }
+
+    .section-divider {
+        width: 100%;
+        margin: 2rem 0;
+    }
+}
+
+/* Button Overrides */
+.btn-outline-primary {
+    border-width: 2px;
+
+    &:hover {
+        background-color: $primaryColor;
+        border-color: $primaryColor;
+        color: #fff;
+    }
+}
+
+.gap-3 {
+    gap: 1rem;
+}

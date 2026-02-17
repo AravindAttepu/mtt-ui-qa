@@ -1,0 +1,206 @@
+<div class="card shadow">
+  <div class="card-body">
+    <h3 class="title">Upload Here</h3>
+    <div class="card-text">
+      <div class="row justify-content-center custom-tabs mb-2">
+        <ul class="list-unstyled">
+          <li [ngClass]="{ active: isImageUpload }" (click)="imageUpload()">
+            Image
+          </li>
+          <li [ngClass]="{ active: !isImageUpload }" (click)="videoUpload()">
+            Video
+          </li>
+        </ul>
+      </div>
+
+      <div class="dnd-wraper my-2" *ngIf="isImageUpload && !editAsset">
+        <section
+          appDragAndDrop
+          (onFileDropped)="uploadFile($event)"
+          class="dnd-container"
+        >
+          <img
+            [src]="previewImage"
+            *ngIf="!previewImages.length"
+            class="preview"
+            alt="image"
+          />
+          <div
+            class="d-flex justify-content-start flex-wrap"
+            *ngIf="previewImages && previewImages.length"
+          >
+            <div
+              class="position-relative"
+              *ngFor="let image of previewImages; let i = index"
+            >
+              <img
+                src="{{ image }}"
+                width="70"
+                height="70"
+                class="m-1"
+                (click)="showGallery()"
+              />
+              <span
+                class="position-absolute text-white"
+                (click)="removeImg(image, i)"
+                style="top: 0; right: 0"
+              >
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Flat_cross_icon.svg/1200px-Flat_cross_icon.svg.png"
+                  class="hover"
+                  style="margin-top: -5px"
+                  width="15"
+              /></span>
+            </div>
+            <!-- <img src="{{listOfFiles[1]}}" width="40" height="30" *ngIf="listOfFiles[1]" class="m-1">
+             <img src="{{listOfFiles[2]}}" width="40" height="30" *ngIf="listOfFiles[2]" class="m-1"> -->
+          </div>
+        </section>
+        <input
+          type="file"
+          class="form-control d-none"
+          name="file"
+          #fileInput
+          (change)="fileProgress($event)"
+        />
+        <button type="button" class="my-btn  my-btn-primary w-100" (click)="fileInput.click()">
+          Browse Images
+        </button>
+      </div>
+      <form [formGroup]="galleryUpload">
+        <div class="form-group" *ngIf="!isImageUpload && !editAsset">
+          <label class="label">
+            Video Link <span class="required-star">*</span></label
+          >
+          <input
+            type="text"
+            formControlName="videoUrl"
+            class="form-control"
+            id="studentName"
+          />
+          <div
+            class="f-14 error-message"
+            *ngIf="
+              (galleryUpload.get('videoUrl').touched || formSubmitted) &&
+              galleryUpload.get('videoUrl').hasError('required')
+            "
+          >
+            Please Enter Event Name
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="label">
+            Event Name <span class="required-star">*</span></label
+          >
+          <input
+            type="text"
+            formControlName="mediaName"
+            class="form-control"
+            id="mediaName"
+          />
+          <div
+            class="f-14 error-message"
+            *ngIf="
+              (galleryUpload.get('mediaName').touched || formSubmitted) &&
+              galleryUpload.get('mediaName').hasError('required')
+            "
+          >
+            Please Enter Event Name
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="label">
+            Event Place <span class="required-star">*</span></label
+          >
+          <input
+            type="text"
+            formControlName="mediaPlace"
+            class="form-control"
+            id="mediaPlace"
+          />
+          <div
+            class="f-14 error-message"
+            *ngIf="
+              (galleryUpload.get('mediaPlace').touched || formSubmitted) &&
+              galleryUpload.get('mediaPlace').hasError('required')
+            "
+          >
+            Please Enter Event Place
+          </div>
+        </div>
+        <!-- <div class="form-group">
+          <label class="label">
+            Label <span class="required-star">*</span></label
+          >
+          <input
+            type="text"
+            formControlName="label"
+            class="form-control"
+            id="studentName"
+          />
+          <div
+            class="f-14 error-message"
+            *ngIf="
+              (galleryUpload.get('label').touched || formSubmitted) &&
+              galleryUpload.get('label').hasError('required')
+            "
+          >
+            Please Enter Label
+          </div>
+        </div> -->
+        <div class="form-group">
+          <label class="label">
+            Event Description <span class="required-star">*</span></label
+          >
+          <textarea
+            formControlName="mediaDesc"
+            class="form-control"
+            rows="4"
+          ></textarea>
+          <div
+            class="f-14 error-message"
+            *ngIf="
+              (galleryUpload.get('mediaDesc').touched || formSubmitted) &&
+              galleryUpload.get('mediaDesc').hasError('required')
+            "
+          >
+            Please Enter Event Description
+          </div>
+        </div>
+
+        <div
+          *ngIf="isResponceSuccess"
+          class="alert alert-success f-14 alert-dismissible fade show"
+          role="alert"
+        >
+          {{ serverResponce }}
+          <button
+            type="button"
+            class="close"
+            (click)="hideAlert()"
+            data-dismiss="alert"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="d-flex">
+          <button *ngIf="!editAsset"
+            type="submit"
+            (click)="sendDetails()"
+            class="mx-auto my-btn  my-btn-primary shadow"
+          >
+            Submit
+          </button>
+          <button *ngIf="editAsset"
+          type="submit"
+          (click)="updateAssetDetails()"
+          class="mx-auto my-btn  my-btn-primary shadow"
+        >
+          Submit
+        </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

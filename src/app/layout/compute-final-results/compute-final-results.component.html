@@ -1,0 +1,28 @@
+<h2>Zone-Wise Seat Allocation-version -   THIS IS FINAL !!</h2>
+<table>
+  <thead>
+    <tr>
+      <th>ZONE</th>
+      <th>OPEN</th>
+      <th>ZPHS</th>
+      <th>ZPHS GIRLS</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let zone of zones">
+      <td>{{ zone.zoneName }}</td>
+      <td>
+        <input type="number" min="0" [(ngModel)]="config[zone.id].open" />
+      </td>
+      <td>
+        <input type="number" min="0" [(ngModel)]="config[zone.id].zphs" />
+      </td>
+      <td>
+        <input type="number" min="0" [(ngModel)]="config[zone.id].girls" />
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<button (click)="saveConfiguration()">Save To File</button>
+

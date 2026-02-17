@@ -1,0 +1,29 @@
+@import '../../../assets/scss/variables';
+ul{
+    margin: 0;
+    padding: 0;
+}
+ul li{
+    padding: 0.625rem;
+    transition: 0.8s all;
+}
+ul li:hover{
+    cursor: pointer;
+    box-shadow: 0px 0px 1px 1px #e9e1e1;
+    background: $bgGradientColor;
+    color: $white;
+}
+.active{
+    color: #fff;
+    box-shadow: 0px 0px 1px 1px #e9e1e1;
+    background: $bgGradientColor;
+}
+
+.papers-list {
+    background-color: $white;
+    &__wrapper {
+        display: flex;
+        // justify-content: center;
+        overflow: auto;
+    }
+}

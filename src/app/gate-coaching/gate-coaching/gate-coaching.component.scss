@@ -1,0 +1,58 @@
+/* Tabs Container */
+.custom-tabs {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch; /* smooth scroll on iOS */
+  padding: 0 12px;
+  box-sizing: border-box;
+  text-align: center; /* center the ul */
+}
+
+/* Tabs List */
+.tabs-list {
+  display: inline-block;       /* shrink to fit content */
+  white-space: nowrap;         /* prevent wrapping */
+  margin: 0;                   /* no full-width margin */
+  padding: 0;
+  list-style: none;
+}
+
+/* Tab Items */
+.tabs-list li {
+  display: inline-block;
+  padding: 12px 24px;
+  cursor: pointer;
+  white-space: nowrap;
+  font-weight: 500;
+  color: #555;
+  border-bottom: 3px solid transparent;
+  transition: all 0.3s;
+}
+
+/* Active Tab */
+.tabs-list li.active {
+  color: #fff;
+  background-color: #0077cc;
+  border-bottom: 3px solid #0056a3;
+
+  border-radius: 24px;
+}
+nav{
+  margin-bottom:10px;
+  }
+
+
+/* Mobile adjustments */
+@media screen and (max-width: 767px) {
+  .tabs-list {
+//     display: flex;             /* scrollable on mobile */
+    justify-content: flex-start;
+    white-space: nowrap;
+  }
+
+  .tabs-list li {
+    flex: 0 0 auto;            /* prevent shrinking */
+    padding: 10px 16px;
+
+  }
+}

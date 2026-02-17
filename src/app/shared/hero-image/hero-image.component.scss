@@ -1,0 +1,29 @@
+.hero-wrapper {
+    height: 60vh;
+    background-position: center top 15%;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.1);
+
+    &.contact-us {
+        background-image: url('../../../assets/images/TeamWithJP.webp');
+    }
+
+    h1 {
+        color: #fff;
+        max-width: 60%;
+        line-height: 50px;
+    }
+}
+
+@media screen and (max-width:767px) {
+    h1 {
+        color: #fff;
+        max-width: 100% !important;
+        line-height: 30px !important;
+        font-size: 25px;
+    }
+}

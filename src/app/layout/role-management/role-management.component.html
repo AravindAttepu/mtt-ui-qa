@@ -1,0 +1,54 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12 animated rotateInUpLeft">
+      <div class="card w-100 m-auto">
+        <h2 class="text-center">Role Management</h2>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table text-center">
+              <thead class="table-dark">
+                <tr>
+                  <th>Screen Name</th>
+                  <th *ngFor="let roles of data.roles; let i = index">
+                    {{ roles }}
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr
+                  *ngFor="let name of data.screens; let i = index"
+                  [ngClass]="{ selected: selectedIndex == i }"
+                >
+                  <td (click)="selectStudent(i)" class="hover">
+                    {{ name.screen }}
+                  </td>
+                  <td *ngFor="let isAllowed of name.access; let j = index">
+                    <p>
+                      <label class="toggleSwitch nolabel">
+                        <input
+                          type="checkbox"
+                          name="role"
+                          (change)="checkValue(i, j)"
+                          [(ngModel)]="name.access[j]"
+
+                        />
+                        <span>
+                          <span>No</span>
+                          <span>Yes</span>
+                        </span>
+                        <a></a>
+                      </label>
+                    </p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="card-footer text-right">
+          <button class="my-btn" (click)="update()">Update</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

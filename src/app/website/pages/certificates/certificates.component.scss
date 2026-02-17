@@ -1,0 +1,67 @@
+@import './../../../../assets/scss/variables';
+
+.heading {
+    font-weight: 800;
+    color: #1f2937;
+    margin-bottom: 1.5rem;
+}
+
+.max-w-800 {
+    max-width: 800px;
+}
+
+.cert-icon {
+    font-size: 3.5rem;
+    line-height: 1;
+}
+
+.certificate-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 12px;
+    overflow: hidden;
+
+    &:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1) !important;
+    }
+}
+
+.cert-title {
+    color: #1f2937;
+    font-size: 1.1rem;
+}
+
+.cert-label {
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.cert-desc {
+    line-height: 1.5;
+}
+
+.shadow-cream {
+    box-shadow: 0 10px 40px -10px rgba(245, 222, 179, 0.5);
+}
+
+.faq-section {
+    .card {
+        transition: all 0.3s ease;
+        border-left: 4px solid transparent !important;
+
+        &:hover {
+            border-left: 4px solid $primaryColor !important;
+        }
+    }
+
+    .btn-link:hover,
+    .btn-link:focus {
+        text-decoration: none;
+    }
+}
+
+.mdi-plus {
+    font-size: 1.2rem;
+    color: $primaryColor;
+}

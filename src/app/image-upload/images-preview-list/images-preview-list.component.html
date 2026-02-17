@@ -1,0 +1,65 @@
+<div class="images-preview mr-4">
+    <div class="row justify-content-center custom-tabs">
+        <ul class="list-unstyled">
+            <li [ngClass]="{ active: isImageView }" (click)="isImageView = true">
+              Image
+            </li>
+            <li [ngClass]="{ active: !isImageView }" (click)="onClickVideo()">
+              Video
+            </li>
+          </ul>
+    </div>
+    <div class="row m-t-20" *ngIf="isImageView">
+        <div class="col-12 col-sm-6 col-md-4" *ngFor="let photoObj of photosList;let i = index">
+            <div class="images-preview__wrapper">
+                <div class="images-preview__img-parent">
+                    <img class="edit-icon-img" src="assets/icons/edit-ico.svg" (click)="editAsset(i,photoObj, 'photos')" alt="edit"/>
+                    <div class="onoffswitch images-preview__toggle-switch">
+                        <input type="checkbox" 
+                        [(ngModel)]="photoObj.active"
+                        (ngModelChange)="updateActiveStatus(i, photoObj, 'photos')"
+                        [ngModelOptions]="{ standalone: true }"
+                        name="onoffswitch" 
+                        class="onoffswitch-checkbox" [id]="'active_toggle_'+i" [checked]="photoObj.active">
+                        <label class="onoffswitch-label" [for]="'active_toggle_'+i">
+                          <span class="onoffswitch-inner"></span>
+                          <span class="onoffswitch-switch"></span>
+                        </label>
+                      </div>
+                    <img [src]="photoObj.mediaUrl"
+                        class="w-100" />
+                </div>
+                <div class="text-center image-description">
+                    {{photoObj.mediaDesc}}
+                </div>
+            </div>
+        </div>       
+    </div>
+
+    <div class="row m-t-20" *ngIf="!isImageView">
+        <div class="col-12 col-sm-6 col-md-6" *ngFor="let videoObj of videosList;let i = index">
+            <div class="images-preview__wrapper">
+                <div class="images-preview__img-parent">
+                    <img class="edit-icon-img" src="assets/icons/edit-ico.svg" (click)="editAsset(i,videoObj, 'videos')" alt="edit"/>
+                    <div class="onoffswitch images-preview__toggle-switch">
+                        <input type="checkbox" 
+                        [(ngModel)]="videoObj.active"
+                        (ngModelChange)="updateActiveStatus(i, videoObj, 'videos')"
+                        [ngModelOptions]="{ standalone: true }"
+                        name="onoffswitch" 
+                        class="onoffswitch-checkbox" [id]="'active_toggle_'+i" [checked]="videoObj.active">
+                        <label class="onoffswitch-label" [for]="'active_toggle_'+i">
+                          <span class="onoffswitch-inner"></span>
+                          <span class="onoffswitch-switch"></span>
+                        </label>
+                      </div>
+                    <iframe [src]="videoObj.path"
+                        class="w-100" ></iframe>
+                </div>
+                <div class="text-center image-description">
+                    {{videoObj.mediaDesc}}
+                </div>
+            </div>
+        </div>       
+    </div>
+</div>

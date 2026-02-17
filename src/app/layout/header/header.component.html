@@ -1,0 +1,136 @@
+<div>
+  <app-address-nav-header></app-address-nav-header>
+  <nav class="navbar navbar-expand-lg navbar-light header container-fluid main-navbar"
+    [class.main-nav--expanded]="isMenuOpen">
+
+    <!-- Mobile Reordering: Hamburger on Left -->
+    <button class="navbar-toggler" type="button" (click)="toggleMenu($event)" aria-controls="menuDropdown"
+      [attr.aria-expanded]="isMenuOpen" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Logo beside Hamburger -->
+    <a href="/" class="navbar-brand logo ml-2">
+      <img src="assets/images/sadisha.png" class="img-fluid logo-img" alt="Logo">
+    </a>
+
+    <!-- Mobile persistent Donate Button (Right) -->
+    <div class="d-lg-none">
+      <a [routerLink]="['/donate']" class="btn btn-warning font-weight-bold text-dark mobile-top-donate"
+        style="border-radius: 20px; padding: 6px 15px; font-size: 0.85rem; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">DONATE</a>
+    </div>
+
+    <div class="collapse navbar-collapse justify-content-end" id="menuDropdown" [class.show]="isMenuOpen">
+      <div class="nav-container-inner">
+        <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+          <li class="nav-item px-12 mx-4" routerLinkActive="active">
+            <a class="nav-link" [routerLink]="['/home']" (click)="closeMenu()">
+              Home
+            </a>
+          </li>
+          <li class="nav-item dropdown px-12 mx-4" routerLinkActive="active" (mouseenter)="onAboutUsMouseEnter()"
+            (mouseleave)="onAboutUsMouseLeave()">
+            <a class="nav-link dropdown-toggle" role="button" [attr.aria-expanded]="isAboutUsDropdownOpen"
+              (click)="handleAboutUsToggle($event)">
+              ABOUT US
+            </a>
+            <div class="dropdown-menu" [class.show]="isAboutUsDropdownOpen">
+              <a class="dropdown-item" [routerLink]="['/about-overview']" (click)="closeMenu()">
+                Overview
+              </a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" [routerLink]="['/certificates']" (click)="closeMenu()">
+                Certificates
+              </a>
+            </div>
+          </li>
+          <li class="nav-item dropdown px-12 mx-4" routerLinkActive="active" (mouseenter)="onProgramsMouseEnter()"
+            (mouseleave)="onProgramsMouseLeave()">
+            <a class="nav-link dropdown-toggle" href="#" role="button" [attr.aria-expanded]="isProgramsDropdownOpen"
+              (click)="handleProgramsToggle($event)">
+              OUR PROGRAMS
+            </a>
+            <div class="dropdown-menu" [class.show]="isProgramsDropdownOpen">
+              <a class="dropdown-item font-weight-bold" [routerLink]="['/education']" (click)="closeMenu()"
+                style="border-bottom: 1px solid #eee;">
+                Education & Initiatives
+              </a>
+              <a class="dropdown-item pl-4" [routerLink]="['/talent-test']" (click)="closeMenu()">
+                <span class="mdi mdi-chevron-right"></span> Maths Talent Test
+              </a>
+              <a class="dropdown-item pl-4" [routerLink]="['/gate-coaching']" (click)="closeMenu()">
+                <span class="mdi mdi-chevron-right"></span> Gate Coaching
+              </a>
+              <a class="dropdown-item pl-4" [routerLink]="['/gate-mou']" (click)="closeMenu()">
+                <span class="mdi mdi-chevron-right"></span> Campus GATE Coaching
+              </a>
+            </div>
+          </li>
+
+
+          <li class="nav-item px-12 mx-4" routerLinkActive="active">
+            <a class="nav-link" [routerLink]="['/gallery']" (click)="closeMenu()">
+              GALLERY
+            </a>
+          </li>
+          <li class="nav-item px-12 mx-4" routerLinkActive="active">
+            <a class="nav-link" [routerLink]="['/press']" (click)="closeMenu()">
+              PRESS
+            </a>
+          </li>
+          <li class="nav-item px-12 mx-4" routerLinkActive="active">
+            <a class="nav-link" [routerLink]="['/contact-us']" (click)="closeMenu()">
+              CONTACT US
+            </a>
+          </li>
+          <li class="nav-item px-12 mx-4" routerLinkActive="active">
+            <a class="nav-link" [routerLink]="['/faq']" (click)="closeMenu()">
+              FAQ
+            </a>
+          </li>
+          <li class="nav-item dropdown px-12 mx-4" routerLinkActive="active" (mouseenter)="onRegisterMouseEnter()"
+            (mouseleave)="onRegisterMouseLeave()">
+
+            <a class="nav-link dropdown-toggle" href="#" role="button" [attr.aria-expanded]="isRegisterDropdownOpen"
+              (click)="handleRegisterToggle($event)">
+              REGISTER
+            </a>
+
+            <div class="dropdown-menu" [class.show]="isRegisterDropdownOpen">
+              <a class="dropdown-item" [routerLink]="['/student-registration']" (click)="closeMenu()">
+                As a Student
+              </a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" [routerLink]="['/volunteer-registration']" (click)="closeMenu()">
+                As a Volunteer
+              </a>
+            </div>
+          </li>
+          <li class="nav-item px-12 mx-4 nav-signin" routerLinkActive="active">
+            <a class="nav-link" [routerLink]="['/login']" (click)="closeMenu()">
+              SIGN IN
+            </a>
+          </li>
+        </ul>
+
+        <!-- Mobile Menu Utility Footer (CRY Style) -->
+        <div class="d-lg-none mobile-menu-footer text-center pt-4 pb-2 border-top">
+          <div class="contact-links mb-3">
+            <p class="mb-2"><a href="mailto:admin@sadisha.org" class="text-muted small"><i
+                  class="fa fa-envelope mr-2"></i>admin@sadisha.org</a></p>
+            <p class="mb-0"><a href="tel:+919550895968" class="text-muted small"><i
+                  class="fa fa-phone mr-2"></i>+91-9550895968</a></p>
+          </div>
+          <div class="social-links-mobile">
+            <a href="https://www.facebook.com/sadisha.org/" class="text-primary mx-3"><i
+                class="fa fa-facebook fa-lg"></i></a>
+            <a href="https://www.facebook.com/sadisha.org/" class="text-primary mx-3"><i
+                class="fa fa-twitter fa-lg"></i></a>
+            <a href="https://www.facebook.com/sadisha.org/" class="text-primary mx-3"><i
+                class="fa fa-instagram fa-lg"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</div>

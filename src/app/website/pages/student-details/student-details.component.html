@@ -1,0 +1,105 @@
+<app-hero-image [heading]="'Student Details'" [bgImageClass]="'contact-us'"></app-hero-image>
+
+<div class="container">
+  <div class="row">
+    <ng-container>
+
+     <div style='color:#ff7355' class="text-center f-22 m-t-32 m-b-20 red">
+      <b>
+        <a class="terms" href="/assets/registration-guidelines.html" target="_blank" style="color: blue;">
+            <U> PLEASE REFER TO THE STEP 7 OF THE REGISTRATION GUIDELINES TO UPLOAD PHOTO</U></a>
+      </b>
+  </div>
+</ng-container>
+    <!-- Left Column: Student Details -->
+    <div class="col-md-6">
+      <div class="student-details">
+        <h2 class="student-details__title">Student Details</h2>
+
+        <!-- Conditional Photo / Upload -->
+        <div class="student-details__photo text-center">
+          <!-- Show photo if available -->
+          <ng-container *ngIf="studentPhoto; else uploadButton">
+            <img class="student-details__photo-image" [src]="studentPhoto" alt="Student Photo" />
+          </ng-container>
+
+          <!-- Upload / Webcam button if photo is null -->
+          <ng-template #uploadButton>
+            <div class="d-flex justify-content-end mt-2">
+              <button 
+                class="image-choice-btn"  *ngIf="uploadFlag === 'true'" 
+                [class.active]="imageChoice === 'webcam'" 
+                (click)="imageChoice = 'webcam'">
+                NO PHOTO IS UPLOADED - CLICK HERE TO UPLOAD.
+              </button>
+               <button 
+                class="image-choice-btn"  *ngIf="uploadFlag === 'false'" 
+                 (click)="showUploadBlockedMessage()">
+                REGISTRATIONS ARE OVER. PHOTO CANNOT BE UPLOADED NOW.
+              </button>
+            </div>
+          </ng-template>
+        </div>
+
+        <!-- Student Attributes List -->
+        <div class="student-details__list">
+          <ng-container *ngFor="let item of attributes">
+            <div class="student-details__item">
+              <div class="student-details__key font-italic">{{item.key}}:</div>
+              <div class="student-details__value">{{item.value}}</div>
+            </div>
+          </ng-container>
+        </div>
+
+        <div class="text-center" *ngIf="resultsFlag === 'false' && studentPhoto">
+          <button type="button" class="my-btn my-btn-primary mt-3" (click)="download()">Download</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Column: Image / Webcam -->
+    <div class="col-md-6">
+      <!-- Show uploaded / rotated image -->
+      <div id="parent" class="image-container" *ngIf="imageUrl">
+        <div class="button-wrapper">
+          <button (click)="rotate()" class="my-btn my-btn-primary">Rotate</button>
+        </div>
+        <div id="up" class="image">
+          <img [@rotatedState]='state' class="student-details__image" [src]="imageUrl" alt="Image" />
+        </div>
+      </div>
+
+      <!-- Webcam area -->
+      <div class="col-12 mt-4" *ngIf="imageChoice==='webcam'" style="text-align: left;">
+        <button type="button" (click)="checkPermissions()" class="my-btn web-perms-btn">Webcam Permissions</button>
+        <p *ngIf="status">Status: {{status}}</p>
+      </div>
+
+      <div *ngIf="stream && imageChoice==='webcam'" class="row">
+        <webcam 
+          [trigger]="$trigger" 
+          (imageCapture)="snapshot($event)" 
+          [allowCameraSwitch]="true"
+          (initError)="handleWebcamInitError($event)" 
+          [height]="480" 
+          [width]="640" 
+          [imageQuality]="1"
+          [videoOptions]="videoOptions">
+        </webcam>
+        <div>
+          <button type="button" (click)="captureImage()" class="my-btn my-btn-primary">{{captureBtnLable}}</button>
+        </div>
+      </div>
+
+      <!-- Webcam preview -->
+      <div *ngIf="imageChoice==='webcam' && webcamPreviewImage">
+    
+        <img [src]="webcamPreviewImage" height="480" width="640" />
+          <!-- Upload button -->
+  <button type="button" class="my-btn my-btn-primary" (click)="uploadCapturedImage()">
+    Upload Photo
+  </button>
+      </div>
+    </div>
+  </div>
+</div>

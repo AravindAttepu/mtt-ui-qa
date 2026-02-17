@@ -1,0 +1,50 @@
+<div class="signup-page">
+    <div class="signup-page__overlay row m-0">
+        <div class="col-md-6 text-sm-center d-flex signup-page__left animated bounceInLeft">
+            <h1 class="white-color">Hello! Doctor <span class="primary-color">Sign up</span> to manage </h1>
+        </div>
+        <div class="col-md-6 d-flex signup-page__right">
+            <form [formGroup]="signupForm">
+                <div class="signup-page__form card m-r-32 animated bounceInDown">
+                    <img src="/assets/images/sadisha.png"/>
+                    <h4 class="signup-page__header">New here?</h4>
+                    <h6 class="signup-page__sub-header">Signing up is easy. It only takes a few step</h6>
+                    <div class="signup-page__form-group">
+                        <label> User Name</label>
+                        <input type="text" class="form-control" formControlName="userName"
+                            placeholder="Enter your user name" />
+                    </div>
+                    <div class="signup-page__form-group">
+                        <label> Email ID</label>
+                        <input type="email" class="form-control" formControlName="email"
+                            placeholder="Enter your Email ID" />
+                    </div>
+                    <div class="signup-page__form-group">
+                        <label> Password</label>
+                        <input type="password" class="form-control" formControlName="password"
+                            placeholder="Enter your password" />
+                    </div>
+                    <div class="signup-page__form-group">
+                        <label> Confirm Password</label>
+                        <input type="password" class="form-control" formControlName="confirmPassword"
+                            placeholder="Confirm your password" />
+                    </div>
+                    <div class="m-t-28 text-center">
+                        <button type="button" (click)="login()" class="my-btn my-btn-primary w-100">SIGN UP</button>
+                    </div>
+                    <div class="row m-t-20 signup-page__forgot-sec no-gutters">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="termsAndCondition">
+                            <label class="custom-control-label" for="termsAndCondition">
+                                <span>I agree to all <a routerLink="/terms-and-conditions">Terms & Conditions</a></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="text-center m-t-20 f-l">
+                        Already have an account? <a routerLink="/"> Login </a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

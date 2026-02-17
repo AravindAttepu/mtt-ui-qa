@@ -1,0 +1,145 @@
+<div class="user-management">
+    <div class="user-management__header">
+        <div class="user-management__title-section">
+            <h1 class="user-management__title">👥 User Management</h1>
+            <p class="user-management__subtitle">Manage roles and user permissions</p>
+        </div>
+        <div class="user-management__stats">
+            <div class="stat-card">
+                <div class="stat-card__value">{{ allUsers.length }}</div>
+                <div class="stat-card__label">Total Users</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-card__value">{{ allRoles.length }}</div>
+                <div class="stat-card__label">Total Roles</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tab Navigation -->
+    <div class="tabs">
+        <button class="tabs__button" [class.tabs__button--active]="activeTab === 'users'" (click)="switchTab('users')">
+            <span class="tabs__icon">👤</span>
+            Users
+        </button>
+        <button class="tabs__button" [class.tabs__button--active]="activeTab === 'roles'" (click)="switchTab('roles')">
+            <span class="tabs__icon">🔐</span>
+            Roles
+        </button>
+    </div>
+
+    <!-- Users Section -->
+    <div class="tab-content" *ngIf="activeTab === 'users'">
+        <div class="users-section">
+            <div class="users-section__header">
+                <div class="users-section__filters">
+                    <div class="search-box">
+                        <span class="search-box__icon">🔍</span>
+                        <input type="text" class="search-box__input" placeholder="Search users by name or username..."
+                            [(ngModel)]="searchQuery" (input)="filterUsers()" />
+                    </div>
+
+                    <div class="filter-box">
+                        <label class="filter-box__label">Filter by Role:</label>
+                        <select class="filter-box__select" [(ngModel)]="roleFilter" (change)="filterUsers()">
+                            <option value="all">All Roles</option>
+                            <option *ngFor="let role of allRoles" [value]="role">{{ role }}</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="users-table-wrapper">
+                <table class="users-table">
+                    <thead>
+                        <tr>
+                            <th>User Details</th>
+                            <th *ngFor="let role of allRoles">{{ role }}</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let user of filteredUsers; let i = index"
+                            [class.users-table__row--editing]="user.isEdit">
+                            <td class="users-table__user-cell">
+                                <div class="user-info">
+                                    <div class="user-info__avatar">
+                                        {{ (user.studentName || user.userName)?.charAt(0).toUpperCase() }}
+                                    </div>
+                                    <div class="user-info__details">
+                                        <div class="user-info__name">{{ user.studentName || user.userName }}</div>
+                                        <div class="user-info__username">@{{ user.userName }}</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td *ngFor="let role of allRoles; let j = index" class="users-table__role-cell">
+                                <div *ngIf="!user.isEdit" class="role-status">
+                                    <span *ngIf="hasRole(user, role)" class="role-badge"
+                                        [style.background-color]="getRoleColor(role)">
+                                        ✓
+                                    </span>
+                                    <span *ngIf="!hasRole(user, role)" class="role-status--inactive">—</span>
+                                </div>
+                                <div *ngIf="user.isEdit" class="role-toggle">
+                                    <label class="checkbox-wrapper">
+                                        <input type="checkbox" [(ngModel)]="user.assignedRoles[role]"
+                                            [ngModelOptions]="{ standalone: true }" class="checkbox-input" />
+                                        <span class="checkbox-custom"></span>
+                                    </label>
+                                </div>
+                            </td>
+                            <td class="users-table__action-cell">
+                                <button *ngIf="!user.isEdit" class="btn btn--edit" (click)="editUserRoles(user)">
+                                    ✏️ Edit
+                                </button>
+                                <div *ngIf="user.isEdit" class="action-buttons">
+                                    <button class="btn btn--save" (click)="updateRoles(user)">
+                                        ✓ Save
+                                    </button>
+                                    <button class="btn btn--cancel" (click)="user.isEdit = false">
+                                        ✕ Cancel
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div *ngIf="filteredUsers.length === 0" class="empty-state">
+                    <div class="empty-state__icon">🔍</div>
+                    <div class="empty-state__message">No users found</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Roles Section -->
+    <div class="tab-content" *ngIf="activeTab === 'roles'">
+        <div class="roles-section">
+            <div class="roles-grid">
+                <div class="role-card" *ngFor="let role of allRoles">
+                    <div class="role-card__header">
+                        <div class="role-card__icon" [style.background-color]="getRoleColor(role)">
+                            {{ role.charAt(0) }}
+                        </div>
+                        <div class="role-card__title-section">
+                            <h3 class="role-card__title">{{ role }}</h3>
+                            <p class="role-card__description">{{ getRoleDescription(role) }}</p>
+                        </div>
+                    </div>
+                    <div class="role-card__stats">
+                        <div class="role-stat">
+                            <span class="role-stat__value">{{ roleStats[role]?.count || 0 }}</span>
+                            <span class="role-stat__label">Users</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div *ngIf="allRoles.length === 0" class="empty-state">
+                <div class="empty-state__icon">🔐</div>
+                <div class="empty-state__message">No roles available</div>
+            </div>
+        </div>
+    </div>
+</div>

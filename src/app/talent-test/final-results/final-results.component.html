@@ -1,0 +1,36 @@
+<div class="col-md-12 animated rotateInUpLeft">
+    <div class="card w-100 m-auto">
+        <h2 class="text-center">Selected List of Sadisha Math Talent Test - 2025</h2>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table text-center">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>S.No</th>
+                            <th>Name</th>
+                            <th>Parent Name</th>
+                            <th>School</th>
+                            <th>Zone</th>
+                            <th>Rank in Open Category</th>
+                            <th>Questions Solved</th>
+                            <th>Score</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let result of finalResult; let i = index">
+                            <td>{{i + 1}}</td>
+                            <td>{{result.name}}</td>
+                            <td>{{result.parentName}}</td>
+                            <td>{{result.school}}</td>
+                            <td>{{result.zone}}</td>
+                            <td>{{result.rankinOpenCategory}}</td>
+                            <td>{{result.questionsSolved}}</td>
+                            <td>{{result.score}}</td>
+                        </tr>
+    
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

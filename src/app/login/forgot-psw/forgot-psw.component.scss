@@ -1,0 +1,48 @@
+@import '../../../assets/scss/variables';
+.forgot-psw {   
+     background-image: url('https://drive.google.com/thumbnail?id=10xJiS27dxcoss8XesBhNBQ3O9rElhDnd');
+     background-repeat: no-repeat;
+     background-size: cover;
+     min-height: 100vh;
+     background-position: center;
+
+    &__overlay {
+        background-color: rgba(0,0,0,0.5);
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;     
+        color: $white;
+    } 
+    &__left, 
+    &__right {
+        justify-content: flex-end;
+    }
+    &__sub-header {
+        font-family: 'myFontsLight';
+    }
+    &__form {
+        color: $black;
+        width: 25rem;
+        padding: 1.5rem;    
+    }
+    &__forgot-sec {
+        font-family: 'myFontsLight';
+        font-size: 0.875rem;
+    } 
+    &__form-group {
+        label {
+            font-family: 'myFontsLight';
+            font-size: 0.875rem;
+        }
+        margin-bottom: 1rem;
+        .form-control {
+            padding: 0.5rem 1rem;
+        }
+    }
+    input {
+        font-size: 0.875rem;
+        font-family: 'myFontsLight';
+        min-height: 2.8125rem;
+    }
+}

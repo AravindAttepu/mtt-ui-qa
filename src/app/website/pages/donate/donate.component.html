@@ -1,0 +1,232 @@
+<div class="donate-page">
+
+  <!-- Main Two-Column Layout -->
+  <div class="donation-wrapper">
+    <div class="container">
+      <div class="donation-grid">
+
+        <!-- LEFT SIDE: Content & Image -->
+        <div class="content-side">
+
+          <!-- Hero Image -->
+          <div class="content-image">
+            <img src="assets/images/avatar.png" alt="Students learning"
+              onerror="this.src='assets/images/sadisha/students-hero.jpg'">
+          </div>
+
+          <!-- Title & Description -->
+          <div class="content-text">
+            <h1 class="content-title">EMPOWER RURAL INDIA THROUGH EDUCATION</h1>
+
+            <p>Since 2012, Sadisha Foundation has been working in rural areas of India to help students from
+              underprivileged backgrounds get quality education and a bright future.</p>
+
+            <p>We work with government schools and local communities to identify talented students who lack resources.
+              Our aim is to provide scholarships, mentorship, and career guidance to help them achieve their dreams.</p>
+
+            <!-- How We Use Your Funds -->
+            <div class="funds-usage">
+              <h4>Your Donation Funds:</h4>
+              <ul>
+                <li><a routerLink="/talent-test">📚 Talent Test</a> - Identifying bright students</li>
+                <li><a routerLink="/education">🎓 Educational Support</a> - Full tuition & books</li>
+                <li><a routerLink="/gate-coaching">📖 GATE Coaching</a> - Free coaching with hostel</li>
+                <li>💡 Mentorship & Career Guidance</li>
+              </ul>
+            </div>
+
+            <div class="impact-highlights">
+              <div class="highlight-item">
+                <span class="number">300+</span>
+                <span class="label">Students Sponsored</span>
+                <span class="info">through Talent Test program</span>
+              </div>
+              <div class="highlight-item">
+                <span class="number">12+</span>
+                <span class="label">Years of Service</span>
+                <span class="info">since 2012</span>
+              </div>
+              <div class="highlight-item">
+                <span class="number">150+</span>
+                <span class="label">Volunteers</span>
+                <span class="info">across India</span>
+              </div>
+              <div class="highlight-item">
+                <span class="number">100+</span>
+                <span class="label">Women Empowered</span>
+                <span class="info">through RGKUT</span>
+              </div>
+              <div class="highlight-item">
+                <a routerLink="/gate-coaching">
+                  <span class="number">9</span>
+                  <span class="label">Women in GATE Prep</span>
+                  <span class="info">Free coaching + hostel</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT SIDE: Donation Form -->
+        <div class="form-side">
+
+          <!-- Citizenship Toggle (Top) -->
+          <div class="region-toggle">
+            <button type="button" class="region-btn" [class.active]="citizenshipType === 'indian'"
+              (click)="selectCitizenship('indian')">
+              INDIA
+            </button>
+            <button type="button" class="region-btn" [class.active]="citizenshipType === 'international'"
+              (click)="selectCitizenship('international')">
+              🌍 INTERNATIONAL
+            </button>
+          </div>
+
+          <!-- INDIAN DONORS -->
+          <div *ngIf="citizenshipType === 'indian'" class="donation-form animate-fade-in">
+
+            <h2 class="form-title">Supporting Education, Shaping Futures</h2>
+
+            <!-- Amount Section -->
+            <h3 class="amount-title">Select Donation Amount</h3>
+
+            <div class="amount-buttons">
+              <button type="button" class="amount-btn" [class.selected]="selectedAmount === 1000 && !customAmount"
+                (click)="selectAmount(1000)">
+                ₹ 1,000
+              </button>
+              <button type="button" class="amount-btn" [class.selected]="selectedAmount === 2000 && !customAmount"
+                (click)="selectAmount(2000)">
+                ₹ 2,000
+              </button>
+            </div>
+
+            <p class="impact-message" *ngIf="selectedAmount === 1000 && !customAmount">
+              Provides educational materials for one student
+            </p>
+            <p class="impact-message" *ngIf="selectedAmount === 2000 && !customAmount">
+              Supports one student for a month
+            </p>
+
+            <div class="amount-buttons">
+              <button type="button" class="amount-btn" [class.selected]="selectedAmount === 5000 && !customAmount"
+                (click)="selectAmount(5000)">
+                ₹ 5,000
+              </button>
+              <button type="button" class="amount-btn" [class.selected]="selectedAmount === 10000 && !customAmount"
+                (click)="selectAmount(10000)">
+                ₹ 10,000
+              </button>
+            </div>
+
+            <p class="impact-message" *ngIf="selectedAmount === 5000 && !customAmount">
+              Covers tuition fees for one semester
+            </p>
+            <p class="impact-message" *ngIf="selectedAmount === 10000 && !customAmount">
+              Full scholarship for one student for a year
+            </p>
+
+            <!-- Other Amount -->
+            <div class="other-amount">
+              <input type="text" placeholder="Other Amount (₹)" [value]="customAmount || ''"
+                (input)="onCustomAmountChange($event)">
+            </div>
+
+            <!-- Donor Details -->
+            <form [formGroup]="donationForm" class="donor-details">
+              <input type="text" formControlName="fullName" placeholder="Full Name *">
+              <input type="email" formControlName="email" placeholder="Email Address *">
+              <input type="tel" formControlName="phone" placeholder="Phone Number *">
+              <input type="text" formControlName="panNumber" placeholder="PAN Number (for 80G receipt)">
+
+              <!-- 80G Note under PAN -->
+              <p class="tax-note">
+                <i class="fa fa-check-circle"></i> 80G Tax Benefit Available on all donations
+              </p>
+            </form>
+
+            <!-- Payment Type -->
+            <div class="payment-type">
+              <h4>Payment Method:</h4>
+              <div class="payment-options">
+                <label class="payment-option" [class.selected]="paymentMethod === 'razorpay'">
+                  <input type="radio" name="payment" value="razorpay" [checked]="paymentMethod === 'razorpay'"
+                    (change)="selectPaymentMethod('razorpay')">
+                  <span class="option-label">💳 Cards / Net Banking</span>
+                </label>
+                <label class="payment-option" [class.selected]="paymentMethod === 'upi'">
+                  <input type="radio" name="payment" value="upi" [checked]="paymentMethod === 'upi'"
+                    (change)="selectPaymentMethod('upi')">
+                  <span class="option-label">📱 UPI</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Donate Button -->
+            <button type="button" class="donate-btn"
+              (click)="paymentMethod === 'upi' ? initiateUPIPayment() : initiateRazorpayPayment()"
+              [disabled]="!donationForm.valid || getFinalAmount() < 1 || isProcessing">
+              <span *ngIf="!isProcessing">DONATE ₹{{getFinalAmount() | number}}</span>
+              <span *ngIf="isProcessing">Processing...</span>
+            </button>
+
+            <p class="secure-note">
+              <i class="fa fa-lock"></i> 100% Secure Payment via Razorpay
+            </p>
+
+          </div>
+
+          <!-- INTERNATIONAL DONORS -->
+          <div *ngIf="citizenshipType === 'international'" class="international-form animate-fade-in">
+
+            <h2 class="form-title">International Donations</h2>
+
+            <!-- Benevity -->
+            <div class="benevity-section">
+              <h4>💼 Corporate Giving via Benevity</h4>
+              <p>If your employer uses Benevity, you can donate directly.</p>
+              <a href="https://causes.benevity.org/causes/356-5696165402806_5e2f" target="_blank" class="benevity-btn">
+                Visit Benevity Page →
+              </a>
+            </div>
+
+            <!-- Bank Details -->
+            <div class="bank-section">
+              <h4><i class="fa fa-university"></i> FCRA Bank Account (SWIFT/Wire)</h4>
+
+              <div class="bank-detail">
+                <span class="label">Beneficiary</span>
+                <span class="value">SADISHA FOUNDATION</span>
+              </div>
+              <div class="bank-detail highlight">
+                <span class="label">Account Number</span>
+                <span class="value">41779372514</span>
+              </div>
+              <div class="bank-detail">
+                <span class="label">Bank</span>
+                <span class="value">STATE BANK OF INDIA</span>
+              </div>
+              <div class="bank-detail">
+                <span class="label">Branch</span>
+                <span class="value">New Delhi Main Branch (00691)</span>
+              </div>
+              <div class="bank-detail">
+                <span class="label">SWIFT Code</span>
+                <span class="value">SBININBB104</span>
+              </div>
+            </div>
+
+            <p class="help-note">
+              <i class="fa fa-info-circle"></i>
+              For assistance, please <a routerLink="/contact-us">contact us</a>.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>

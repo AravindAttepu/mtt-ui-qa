@@ -1,0 +1,21 @@
+.no-notifications {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  background-color: #f9f9f9;
+  color: #555;
+  font-size: 1rem;
+  text-align: center;
+  max-width: 300px;
+  margin: 2rem auto;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.notification-icon {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}

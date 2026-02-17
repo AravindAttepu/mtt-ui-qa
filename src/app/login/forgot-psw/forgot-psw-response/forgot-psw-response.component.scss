@@ -1,0 +1,47 @@
+/* Style for the response container */
+.response-container {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  margin-top: 20px;
+}
+
+/* Style for the headings */
+h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+/* Style for the response message */
+.response-message {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Style for the credentials section */
+.credentials {
+  margin-top: 20px;
+}
+
+/* Style for individual credentials */
+.credential {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.credential-label {
+  font-weight: bold;
+  color: #6e63ff;
+  margin-right: 10px;
+}
+
+.credential-value {
+  flex-grow: 1;
+}
+
+/* Add additional styles as needed */
