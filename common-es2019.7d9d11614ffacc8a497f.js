@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[0],{Bfb3:function(n,t,e){"use strict";e.d(t,"a",(function(){return r}));var s=e("XNiG"),o=e("fXoL");let r=(()=>{class n{constructor(){this.refreshAssets=new s.a,this.editAssets=new s.a}}return n.\u0275fac=function(t){return new(t||n)},n.\u0275prov=o.Bc({token:n,factory:n.\u0275fac,providedIn:"root"}),n})()}}]);

@@ -1,0 +1,27 @@
+@import './variables';
+.section {
+    &__wrapper {
+        background-color: $white;
+        padding: 0 0.625rem;
+    }
+    &__heading {
+        font-size: 1.25rem;
+        padding: 0.625rem 0;
+        margin-bottom: 0;
+    }
+}
+
+
+// Form css
+
+.label {
+    font-family: "myFontsLight";
+    font-size: 0.875rem !important;
+}
+.form-control, .ng-select {
+    font-size: 0.875rem !important;
+}
+
+.required-star, .error-message {
+    color: $errorColor;
+}
